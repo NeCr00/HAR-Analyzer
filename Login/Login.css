@@ -1,0 +1,100 @@
+html {
+    height: 100%;
+  }
+  
+  body {
+    background-image: url("/images/login.jpg");
+    background-size: auto;
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: #ffe9f8;
+  }
+
+  #login-header{
+    color: whitesmoke;
+    margin-top: 10px;
+    font-size: 50px;
+    font-weight: 1000;
+    text-shadow: 10px 10px black;
+  }
+
+
+  #main-holder {
+    width: 50%;
+    height: 70%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+  }
+
+  #login-form{
+    width: 40%;
+    background-color: #06021b83;
+    border: 3px solid #e4e4e4d2;
+    border-radius: 10px;
+    border-style: double;
+      font-family: Arial, Helvetica, sans-serif;
+      justify-items: center;
+      align-items: center;
+      display: grid;
+      align-self: center;
+      margin-bottom:100px;
+      padding: 30px;
+  }
+
+  .login-form-field {
+    outline: none;
+    padding: 15px 30px 8px 30px;
+  }
+input[type="text"], input[type="password"] {
+    background-color: rgba(255, 255, 255, 0.842);
+    width: 55%;
+    border-bottom: 2px solid #000000d0;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif, 'Times New Roman', Times, serif;
+    text-align: left;
+    color: rgb(16, 17, 17);
+      
+  }
+
+   
+
+.username-title ,.password-title{
+    
+    font-family: Arial, Helvetica, sans-serif, 'Times New Roman', Times, serif;
+    font-weight: 1000;
+    font-size: 26px;
+    color:whitesmoke;
+}
+.button-login {
+    width: 40%;
+    padding: 12px;
+    border: 1px solid #faf9f9;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    background-color: #fc5001;
+    cursor: pointer;
+    outline: none;
+    margin-top:40px;
+  }
+
+ 
+  button:hover {background-color: #fc5001ab}
+
+  button:active {
+    box-shadow: 5 5px rgb(0, 0, 0);
+    transform: translateY(6px);
+  }
+
+ 
+a{
+  font-size: larger;
+  color: #fc5001;
+}
+ 
