@@ -15,13 +15,7 @@
 <body>
   
   <main id="main-holder">
-    <div class="notes">
-      <p class="warning"> Password Rules </p> 
-      <p class = rules> &bull; At least 8 characters</p>
-      <p class = rules> &bull; A mixture of both uppercase and lowercase letters </p>
-      <p class = rules> &bull; A mixture of letters and numbers </p>
-      <p class = rules> &bull; Inclusion of at least one special character, e.g., ! @ # ? ] </p>
-    </div>
+   
    
    
     
@@ -40,16 +34,24 @@
       <input type="password"  id="password2" class="signup-form-field" placeholder="">
 
       <p class = "alert" id= "alert2"> </p>
-
       <p class = "alert" id= "message"></p>
+      
 
       <button class="button-sign" id = "submit">Sumbit</button>
-      
-      <a class = alert href="/Login/Login.html">Already Member? Login</a>
-    
+     
+
+      <a class = alert href="/login.php">Already Member? Login</a>
+     
 
     </form>
   
+    <div class="notes">
+      <p class="warning"> Password Rules </p> 
+      <p class = rules> &bull; At least 8 characters</p>
+      <p class = rules> &bull; A mixture of both uppercase and lowercase letters </p>
+      <p class = rules> &bull; A mixture of letters and numbers </p>
+      <p class = rules> &bull; Inclusion of at least one special character, e.g., ! @ # ? ] </p>
+    </div>
   </main>
 </body>
 

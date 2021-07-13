@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['username'])){
+    Header("Location:http://localhost/User/user.php");
+    exit();
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,13 +38,15 @@
       <p class = password-title>Password</p>
       <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
       
+      <p id = "message" class = "alert"> </p>
       <button class="button-login" id="button-login">Login</button>  
 
 
     </form>
     
-   <a href="/Signup/Signup.html">New to Har Analyzer? Sign up Now !</a>
+   <a href="/signup.php">New to Har Analyzer? Sign up Now !</a>
   </main>
 </body>
 
 </html>
+

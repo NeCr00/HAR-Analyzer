@@ -62,7 +62,13 @@ input[type="text"], input[type="password"] {
       
   }
 
+
+  .alert {
    
+    font-size: 20px;
+    font-weight: bold;
+    color: #fc5001;
+  }
 
 .username-title ,.password-title{
     
@@ -94,7 +100,8 @@ input[type="text"], input[type="password"] {
 
  
 a{
-  font-size: larger;
+  font-size: 25px;
   color: #fc5001;
+  font-weight:bold;
 }
  

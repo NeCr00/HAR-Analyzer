@@ -2,7 +2,8 @@
 $(document).ready(function () {
 
 
-    $("#button-login").click(function () {
+    $("#button-login").click(function (e) {
+       e.preventDefault();
         var username = $("#username-field").val()
         var password = $("#password-field").val()
         if (username != "" && password != "") {
@@ -14,7 +15,10 @@ $(document).ready(function () {
                     password:password
                 },
                 success: function (data) {
-                   alert(data)
+                    if(data == 1 )
+                        location.reload();
+                    else
+                      $("#message").text("Invalid Credentials !");
 
                 },
                 error: function (er) {
@@ -25,7 +29,8 @@ $(document).ready(function () {
         }
 
         else {
-            alert("Please Fill All The Details");
+          
+            $("#message").text("Please Fill All The Details !");
         }
 
     }
