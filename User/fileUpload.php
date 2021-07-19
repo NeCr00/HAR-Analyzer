@@ -19,18 +19,18 @@
         <div class=upload-container>
             <h1> Upload HAR File </h1>
             <label> Select Har File :</label>
-            <input id="sortpicture" type="file" name="sortpic" />
+            <input id="harFile" type="file" name="harFile" />
 
 
             <div class=checkbox-container>
                 <h2>Select an option</h2>
                 <div>
                     <label class="">Upload File to System
-                        <input type="checkbox" checked="checked">
+                        <input type="checkbox" checked="checked" id= checkbox1>
                         <span class="checkmark"></span>
                     </label>
                     <label class="">Upload File Locally
-                        <input type="checkbox">
+                        <input type="checkbox" id= checkbox2>
                         <span class="checkmark"></span>
                     </label>
                 </div>
