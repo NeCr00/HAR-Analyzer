@@ -10,7 +10,7 @@ CREATE TABLE users (
   PRIMARY KEY (user_id)
   );
   
-  CREATE TRIGGER `user_create_date` BEFORE INSERT ON `users` FOR EACH ROW SET NEW.date_registered = NOW();
+
   
   
 
@@ -21,7 +21,7 @@ CREATE TABLE users (
 
 CREATE TABLE entries(
 entry_id smallint UNSIGNED AUTO_INCREMENT NOT NULL,
-user_id smallint UNSIGNED AUTO_INCREMENT NOT NULL,
+user_id  smallint UNSIGNED NOT NULL,
 date_registered datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 startedDateTime varchar(255) NOT NULL,
 serverIPAddress varchar(255) DEFAULT NULL,
@@ -48,7 +48,7 @@ FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASC
 
 /********CREATE serversip TABLE********/
 CREATE TABLE serversip(
-userID int(11) NOT NULL,
+user_id  smallint UNSIGNED NOT NULL,
 server_ip varchar(30) NOT NULL,
 lat double NOT NULL,
 lng double NOT NULL,
