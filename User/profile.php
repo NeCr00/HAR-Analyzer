@@ -42,7 +42,7 @@
 	<p>
 		Created by
 		<a target="_blank" href="">Ntiri</a>
-		- Read how I became your dad
+		- Read how I became your daddy
 		<a target="_blank" href="">here</a>
 	</p>
 </footer>
