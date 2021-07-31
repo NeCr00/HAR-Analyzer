@@ -65,7 +65,7 @@ FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASC
 
 CREATE TABLE userips (
   ip_address varchar(50) NOT NULL,
-  user_id int(11) NOT NULL,
+  user_id smallint UNSIGNED NOT NULL,
   lat double NOT NULL,
   lng double NOT NULL,
   isp varchar(100) NOT NULL,
