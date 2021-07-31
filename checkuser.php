@@ -12,18 +12,20 @@ if (isset($_SESSION['username'])){
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$sql = "SELECT * FROM users WHERE username= '$username' ";
+$sql = "SELECT * FROM user WHERE username= '$username' ";
 $result = $conn->query($sql);
 
 $row = mysqli_fetch_array($result);
 
+$userID = $row['user_id'];
 $user = $row['username'];
 $pass = $row['password'];
-$type = $row['type'];
+$role = $row['role'];
 
 if($password == $pass){
     $_SESSION['username'] = $user;
-    $_SESSION['type'] = $type;
+    $_SESSION['userID'] = $userID;
+    $_SESSION['role'] = $role;
     echo 1;
     //Header("Location:http://localhost/User/user.php");
 }

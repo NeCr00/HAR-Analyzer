@@ -6,10 +6,8 @@ if (!isset($_SESSION['username'])) {
     header("Location:http://localhost/login.php");
 }
 
-echo $_SESSION['userID'];
+else{
+    header("Location:http://localhost/User/user.php");
+}
+
 ?>
-
-
-<a href="/logout.php"> Log Out</a>
-
-This is a test

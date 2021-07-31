@@ -16,7 +16,7 @@ if($result->num_rows > 0){
 }
 
 else{
-  $sql = "INSERT INTO users (username, password,type) VALUES ('$username', '$password','user')";
+  $sql = "INSERT INTO user (username, password,role) VALUES ('$username', '$password','User')";
 
   if ($conn->query($sql) === TRUE) {
       echo "New user account created successfully";
