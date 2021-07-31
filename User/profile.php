@@ -1,6 +1,6 @@
 
 <?php 
-#include('navbar.php'); 
+include('navbar.php'); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +17,9 @@
 <body>
 
  <div class="card-container">
-	<img class="round" src="\images\69.jpg" alt="user" />
-	<h3> Η μάνα του Γιάννου</h3>
-	<h6>Τοποθεσία: Στα Δικαστήρια</h6>
+	<img class="round" src="/images/user.png" alt="user" />
+	<h3><?php echo $_SESSION['username'];?></h3>
+
 	<div class="buttons">
 		<button class="primary">
 			Change Username

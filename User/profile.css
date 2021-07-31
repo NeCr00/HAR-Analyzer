@@ -5,15 +5,9 @@
 }
 
 body {
-	background-color: #28223F;
+	background-color: #504e4f;
 	font-family: Montserrat, sans-serif;
-	
-	display: flex;
 	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-
-	min-height: 100vh;
 	margin: 0;
 }
 
@@ -32,15 +26,16 @@ p {
 }
 
 .card-container {
-	background-color: #231E39;
+	background-color: #ffffff;
 	border-radius: 5px;
 	box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
-	color: #B3B8CD;
+	color: #fc5001;
 	padding-top: 30px;
 	position: relative;
 	width: 350px;
 	max-width: 100%;
 	text-align: center;
+	margin-top:200px
 }
 
 .card-container .pro {
@@ -63,9 +58,9 @@ p {
 
 button.primary {
 	background-color:transparent;
-	border: 1px solid #03BFCB;
+	border: 1px solid #fc5001;;
 	border-radius: 3px;
-	color: #03BFCB;
+	color: #fc5001;
 	font-family: Montserrat, sans-serif;
 	font-weight: 500;
 	padding: 10px 10px;
@@ -79,8 +74,8 @@ button.primary {
     }
     
     button:hover {
-        background-color: #03BFCB;
-        color : #231E39;    
+        background-color: #262727;
+        color : #fc5001;;    
     }
 
 

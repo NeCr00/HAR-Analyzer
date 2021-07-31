@@ -1,5 +1,5 @@
 
-body{
+.bodyy{
     height: 100%;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -23,7 +23,7 @@ body{
     border-radius:10px;
 }
 
-ul {
+.ulist {
     list-style-type: none;
     margin: 0 auto;
     padding: 50;
@@ -31,18 +31,18 @@ ul {
     background-color: #333;
   }
 
-li {
+.list {
     
     display: inline;
     float: left;
     border-right: 5px solid #bbb;
   }
 
-  li:last-child {
+  .list:last-child {
     border-right: none;
   }
 
-  li a {
+  .list a {
     display: block;
     color: white;
     text-align: center;
@@ -51,7 +51,7 @@ li {
   }
   
   /* Change the link color to #111 (black) on hover */
-  li a:hover {
+  .list a:hover {
     background-color: #111;
   }
 

@@ -18,14 +18,14 @@ if (!isset($_SESSION['username'])) {
 
 </header>
 
-<body>
+<body class="body">
     <div class=navbar>
-        <ul>
+        <ul class=ulist>
             
-            <li><a href="fileUpload.php">Upload HAR File</a></li>
-            <li><a href="news.asp">Profile</a></li>
-            <li><a href="contact.asp">Results</a></li>
-            <li><a href="/logout.php"> Log Out</a></li>
+            <li class=list><a href="fileUpload.php">Upload HAR File</a></li>
+            <li  class=list><a href="profile.php">Profile</a></li>
+            <li  class=list><a href="contact.asp">Results</a></li>
+            <li  class=list><a href="/logout.php"> Log Out</a></li>
         </ul>
 
     </div>
