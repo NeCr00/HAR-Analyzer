@@ -1,13 +1,11 @@
 $(document).ready(function () {
   const harFile = document.getElementById("harFile");
   var editedHar;
-  var userInfo = getUserInfo();
+  var serverIPs = [];
 
-
-
-$(document).on('click', 'input[type="checkbox"]', function() {      
-    $('input[type="checkbox"]').not(this).prop('checked', false);      
-});
+  $(document).on("click", 'input[type="checkbox"]', function () {
+    $('input[type="checkbox"]').not(this).prop("checked", false);
+  });
 
   harFile.addEventListener("change", (event) => {
     const file = event.target.files[0];
@@ -15,6 +13,7 @@ $(document).on('click', 'input[type="checkbox"]', function() {
 
     reader.onload = function (e) {
       var har = JSON.parse(e.target.result);
+
       var entries = har.log.entries;
       var harInfo = {};
 
@@ -24,7 +23,7 @@ $(document).on('click', 'input[type="checkbox"]', function() {
         const startedDateTime = myEntrie.startedDateTime;
         const timings = myEntrie.timings.wait;
         const serverIP = myEntrie.serverIPAddress;
-
+        serverIPs.push(serverIP);
         //request
         const methodReq = myEntrie.request.method;
         const domainReq = new URL(myEntrie.request.url).hostname;
@@ -49,12 +48,50 @@ $(document).on('click', 'input[type="checkbox"]', function() {
         harInfo[entrie] = entry;
       }
       editedHar = { HarInformation: harInfo };
-      console.log(editedHar);
     };
     reader.readAsText(file);
   });
 
-  document.getElementById("upload").addEventListener("click", (event) => {});
+  document.getElementById("upload").addEventListener("click", (event) => {
+    var serverIP = serverIPAddressFilter(serverIPs);
+    serverIpsInfo = {};
+    var info = {};
+    var num = 0;
+    $.when(IpInfo()).then(function success(data) {
+      info["userIpInfo"] = {
+        IpInfo: {
+          ip: data.ip,
+          isp: data.isp,
+          lat: data.location.lat,
+          lng: data.location.lng,
+        },
+      };
+      // console.log(info);
+      for (ip in serverIP) {
+        $.when(getserverIP(serverIP[ip])).then(function success(data) {
+          serverIpsInfo[num] = data;
+          num++;
+        });
+      }
+
+      setTimeout(function () {
+        UserInfo = { info, serverIpsInfo, editedHar };
+        
+        $.ajax({
+          type: "POST",
+          url: "http://localhost/User/harUpload.php",
+          data:{ "data": JSON.stringify(UserInfo) },
+          success: function (data) {
+            console.log(data);
+            console.log(UserInfo);
+          },
+          error: function (err) {
+            console.log(err);
+          },
+        });
+      }, 3500);
+    });
+  });
 });
 
 function extractHeaders(headers) {
@@ -95,22 +132,33 @@ function extractHeaders(headers) {
   return requestHeader;
 }
 
-function getUserInfo() {
-  $.when(userInfo()).then(function success(data) {
-    var info =  {"userInfo":{"ip": data.ip, "isp":data.isp}}
-    console.log(info)
-    return info;
-  });
-}
-
-function userInfo() {
-  var api_key = "at_QikthQswy6mAel03gqPXoOjc0SvH8";
+function IpInfo() {
+  var api_key = "at_qZhoSREYPDst7AqtUAZK5kt5PklLy";
 
   return $.ajax({
     url: "https://geo.ipify.org/api/v1",
-    data: { apiKey: api_key },
+    data: { apiKey: api_key, ip: "10.10.10.10" },
     success: function (data) {
       userIP = data["ip"];
     },
   });
+}
+
+function getserverIP(ip) {
+  var api_key = "at_qZhoSREYPDst7AqtUAZK5kt5PklLy";
+  return $.ajax({
+    url: "https://geo.ipify.org/api/v1",
+    data: { apiKey: api_key, ipAddress: ip },
+    success: function (data) {
+      //console.log(data);
+    },
+  });
+}
+
+function serverIPAddressFilter(serverIPs) {
+  let uniqueServerIP = [...new Set(serverIPs)];
+  for (ip in uniqueServerIP) {
+    uniqueServerIP[ip] = uniqueServerIP[ip].replace(/[\[\]']+/g, "");
+  }
+  return uniqueServerIP;
 }
