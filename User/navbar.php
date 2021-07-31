@@ -1,5 +1,6 @@
 <?php
 
+
 session_start();
 
 if (!isset($_SESSION['username'])) {
@@ -21,7 +22,7 @@ if (!isset($_SESSION['username'])) {
     <div class=navbar>
         <ul>
             
-            <li><a href="default.asp">Upload HAR File</a></li>
+            <li><a href="fileUpload.php">Upload HAR File</a></li>
             <li><a href="news.asp">Profile</a></li>
             <li><a href="contact.asp">Results</a></li>
             <li><a href="/logout.php"> Log Out</a></li>
