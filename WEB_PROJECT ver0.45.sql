@@ -43,7 +43,7 @@ content_type_response   varchar(255) DEFAULT NULL,
 expires_response   varchar(255) DEFAULT NULL,
 
 PRIMARY KEY (entry_id),
-FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE  
+FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE  
 
 );
 
@@ -57,7 +57,7 @@ lat double NOT NULL,
 lng double NOT NULL,
 
 PRIMARY KEY (server_ip),
-FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE  
+FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE  
 );
 
 
@@ -71,7 +71,7 @@ CREATE TABLE userips (
   isp varchar(100) NOT NULL,
   
   PRIMARY KEY (ip_address),
-  FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE   
+  FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE   
 );
  
  
