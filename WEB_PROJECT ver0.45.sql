@@ -9,7 +9,7 @@ ver0.45:
 
 /********CREATE users TABLE********/
 
-CREATE TABLE users (
+CREATE TABLE user (
   user_id smallint UNSIGNED AUTO_INCREMENT NOT NULL,
   role ENUM ('Admin','User') NOT NULL DEFAULT 'User',
   username varchar(60) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE users (
 
 /********CREATE entries TABLE********/
 
-CREATE TABLE entries(
+CREATE TABLE entry(
 entry_id smallint UNSIGNED AUTO_INCREMENT NOT NULL,
 user_id  smallint UNSIGNED NOT NULL,
 date_registered datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
