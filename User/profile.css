@@ -33,22 +33,13 @@ p {
 	padding-top: 30px;
 	position: relative;
 	width: 350px;
-	max-width: 100%;
+	max-width: 150%;
 	text-align: center;
-	margin-top:200px
+	margin: auto;
+
 }
 
-.card-container .pro {
-	color: #231E39;
-	background-color: #FEBB0B;
-	border-radius: 3px;
-	font-size: 14px;
-	font-weight: bold;
-	padding: 3px 7px;
-	position: absolute;
-	top: 30px;
-	left: 30px;
-}
+
 
 .card-container .round {
 	border: 1px solid #03BFCB;
@@ -81,7 +72,7 @@ button.primary {
 
 .skills {
 	background-color: #1F1A36;
-	text-align: left;
+	text-align: center;
 	padding: 15px;
 	margin-top: 30px;
 } 
@@ -127,3 +118,10 @@ footer a {
     text-decoration: none;
 }
 
+box {
+	
+	align-items: center;
+	border:1px solid #262727;
+	border-radius: 2px;
+	display: inline-block;
+}
