@@ -2,7 +2,7 @@ var lat;
 var lng;
 var i=0;
 var myData = {
-  max: 100,
+  max: 10,
   data:null
 };
 function getLocationData() {
