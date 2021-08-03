@@ -20,7 +20,7 @@ foreach ($serverIps as $server) {
   $serverip = $server->ip;
 
   $sql = "INSERT INTO serversip VALUES (1,'$serverip','$lat','$lng') ";
-  //$conn->query($sql);
+  $conn->query($sql);
 }
 
 foreach ($harEntries as $entry) {
@@ -56,7 +56,7 @@ foreach ($harEntries as $entry) {
   expiresResponse) VALUES (null,1,'$startedDateTime','$serverip','$wait','$method','$domain','$req_host','$req_pragma','$req_cache','$res_status','$res_statusText',
 '$res_cache','$res_pragma','$res_age','$res_last_modified', '$res_content','$res_expires')";
 
-//$conn->query($sql);
+$conn->query($sql);
 }
 
 
@@ -77,7 +77,7 @@ if ($conn->query($sql) === TRUE) {
 
 function extractHeaders($data, $variable)
 {
-  if (array_key_exists($variable, $data))
+  if (array_key_exists($variable, (array)$data))
     return $data->{$variable};
   else
     return null;

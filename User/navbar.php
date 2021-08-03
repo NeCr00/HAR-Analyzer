@@ -7,6 +7,9 @@ if (!isset($_SESSION['username'])) {
     header("Location:http://localhost/login.php");
 }
 
+if (isset($_SESSION['username']) && $_SESSION['role'] == 'Admin') {
+    header("Location:http://localhost/Admin/basic_info.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,21 +18,24 @@ if (!isset($_SESSION['username'])) {
 
     <title>Forum</title>
     <link rel="stylesheet" href="navbar.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 </header>
 
-<body class="body">
-    <div class=navbar>
-        <ul class=ulist>
-            
-            <li class=list><a href="fileUpload.php">Upload HAR File</a></li>
-            <li  class=list><a href="profile.php">Profile</a></li>
-            <li  class=list><a href="contact.asp">Results</a></li>
-            <li  class=list><a href="/logout.php"> Log Out</a></li>
-        </ul>
+<body class="news">
+    <header>
+        <div class="nav">
+            <ul>
+                <li ><a id="link"  href="fileUpload.php">Har Upload</a></li>
+                <li ><a id="link" href="profile.php">Profile Management</a></li>
+                
+                <li><a id="link" href="results.php">Data Visualization</a></li>
+                <li class="logout"><a id="link" href="/logout.php">Log Out</a></li>
+            </ul>
 
-    </div>
 
+        </div>
+    </header>
 </body>
 
 

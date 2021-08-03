@@ -34,14 +34,12 @@
                         <span class="checkmark"></span>
                     </label>
                 </div>
-
+                <button id="upload" class=myButton>Upload</button>
             </div>
-            <button id="upload" class=myButton>Upload</button>
+           
         </div>
 
-        <div class=files-container>
-            <h1> Locally Saved Files</h1>
-        </div>
+      
 
     </div>
 </body>

@@ -7,7 +7,6 @@ html {
       justify-items: center;
       align-items: center;
       text-align: center;
-
     background-size: auto;
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
@@ -62,22 +61,15 @@ html {
 
 
   .upload-container{
-    float:left;
+  
       margin: 0 auto;
       width: 45%;
       height:45%;
       margin-top: 180px;
-      border: 2px solid #a53e3e;
+      
   }
 
-  .files-container{
-    float:left;
-      margin: 0 auto;
-      width: 45%;
-      height:45%;
-      margin-top: 180px;
-      border: 2px solid #a53e3e;
-  }
+ 
 
 
   .myButton {
