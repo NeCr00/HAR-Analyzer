@@ -4,7 +4,7 @@ include('../dbconn.php');
 
 session_start();
 
-$sql = "SELECT lat,lng FROM serversip WHERE userID= '1' ";
+$sql = "SELECT lat,lng,count(*) as c FROM serversip  WHERE userID= '1' GROUP BY lat,lng";
 $result = $conn->query($sql);
 
 
@@ -15,7 +15,8 @@ if (mysqli_num_rows($result) > 0){
 
 $lat = $row['lat'];
 $lng = $row['lng'];
-$temp = array( 'lat' => $lat, 'lng' => $lng);
+$count = $row['c'];
+$temp = array( 'lat' => $lat, 'lng' => $lng,'c' => $count);
 
 $data[]=$temp;
 

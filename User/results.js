@@ -36,6 +36,7 @@ var cfg = {
   "useLocalExtrema": true,
   latField: 'lat',
   lngField: 'lng',
+  valueField: 'count'
 };
 var heatmapLayer = new HeatmapOverlay(cfg);
 
