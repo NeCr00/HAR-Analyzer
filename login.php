@@ -3,7 +3,7 @@
 session_start();
 
 if (isset($_SESSION['username'])){
-    Header("Location:http://localhost/User/profile.php");
+    Header("Location:http://localhost/User/userprofile.php");
     exit();
 }
 
