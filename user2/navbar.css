@@ -1,0 +1,60 @@
+
+.bodyy{
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+
+.navbar{
+    width: 100%;
+    height: 100px;
+    background-color: red;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: whitesmoke;
+    border: 3px solid black;
+    border-radius:10px;
+}
+
+.ulist {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 50;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+.list {
+    
+    display: inline;
+    float: left;
+    border-right: 5px solid #bbb;
+  }
+
+  .list:last-child {
+    border-right: none;
+  }
+
+  .list a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 215px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  .list a:hover {
+    background-color: #111;
+  }
+
+  .active {
+    background-color: #04AA6D;
+  }

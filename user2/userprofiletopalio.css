@@ -1,0 +1,259 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-image: url("/images/login.jpg");
+    background-size: auto;
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+}
+
+#login-header {
+    color: whitesmoke;
+    margin-top: 10px;
+    font-size: 50px;
+    font-weight: 1000;
+    text-shadow: 10px 10px black;
+}
+
+#main-holder {
+    width: 50%;
+    height: 80%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+#login-form {
+    width: 40%;
+    height: 80%;
+    background-color: #06021b83;
+    border: 3px solid #e4e4e4d2;
+    border-radius: 10px;
+    border-style: double;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-items: left;
+    align-items: left;
+    display: grid;
+    margin-bottom: 10px;
+    padding: 30px;
+}
+
+.signup-form-field {
+    outline: none;
+    padding: 5px 30px 8px 30px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    background-color: rgba(255, 255, 255, 0.918);
+    width: 50%;
+    height: 25px;
+    border-bottom: 2px solid #000000d0;
+    border-radius: 25px;
+    font-family: "Times New Roman", Times, serif, Helvetica, sans-serif, "Times New Roman", Times, serif;
+    text-align: left;
+    font-size: large;
+    color: rgb(16, 17, 17);
+    margin-bottom: 100px;
+}
+
+label {
+    color: #fc5001;
+}
+
+.titles {
+    font-family: Arial, Helvetica, sans-serif, "Times New Roman", Times, serif;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bolder;
+    color: whitesmoke;
+}
+
+.button-sign {
+    width: 40%;
+    padding: 12px;
+    border: 1px solid #faf9f9;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    background-color: #fc5001;
+    cursor: pointer;
+    outline: none;
+    margin: auto;
+}
+
+button:hover {
+    background-color: #fc5001ab;
+}
+
+button:active {
+    box-shadow: 5 5px rgb(0, 0, 0);
+    transform: translateY(6px);
+}
+
+.status {
+    margin-top: 100px;
+    color: #fc5001;
+    font-size: 20px;
+    background-color: red;
+}
+
+.alert {
+    margin-top: -100px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fc5001;
+}
+
+.notes {
+    margin-top: -80px;
+    color: #fc5001;
+    width: 50%;
+    background-color: #1f1f1f;
+    float: left;
+}
+
+.warning {
+    font-size: 30px;
+    margin: auto;
+    text-align: center;
+}
+
+.rules {
+    font-size: 20px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #504e4f;
+    font-family: Montserrat, sans-serif;
+    align-items: center;
+    margin: 0;
+}
+
+h3 {
+    margin: 10px 0;
+}
+
+h6 {
+    margin: 5px 0;
+}
+
+p {
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.card-container {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
+    color: #fc5001;
+    padding-top: 30px;
+    position: relative;
+    width: 350px;
+    max-width: 100%;
+    text-align: center;
+    margin-top: 200px
+}
+
+.card-container .pro {
+    color: #231E39;
+    background-color: #FEBB0B;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 3px 7px;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.card-container .round {
+    border: 1px solid #03BFCB;
+    border-radius: 50%;
+    padding: 7px;
+}
+
+button.primary {
+    background-color: transparent;
+    border: 1px solid #fc5001;
+    ;
+    border-radius: 3px;
+    color: #fc5001;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    padding: 10px 10px;
+    float: inherit;
+    cursor: pointer;
+}
+
+button:active {
+    box-shadow: 5 5px rgb(0, 0, 0);
+    transform: translateY(6px);
+}
+
+button:hover {
+    background-color: #262727;
+    color: #fc5001;
+    ;
+}
+
+.skills {
+    background-color: #1F1A36;
+    text-align: left;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+.skills ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.skills ul li {
+    border: 1px solid #2D2747;
+    border-radius: 2px;
+    display: inline-block;
+    font-size: 12px;
+    margin: 0 7px 7px 0;
+    padding: 7px;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer i {
+    color: red;
+}
+
+footer a {
+    color: #3c97bf;
+    text-decoration: none;
+}
