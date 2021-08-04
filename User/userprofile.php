@@ -1,6 +1,6 @@
 <?php 
 include "navbar.php"; 
-include "dbconn.php";
+include('../dbconn.php');
 
 
 
