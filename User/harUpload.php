@@ -74,12 +74,17 @@ $isp= $userIpInfo->isp;
 $lat = $userIpInfo->lat;
 $lng = $userIpInfo->lng;
 
+$isp = str_replace(array("'"), " ",$isp);
+
+
 $sql = "INSERT INTO userips Values (null,1, '$userIp','$lat','$lng','$isp')";
 
 if ($conn->query($sql) === TRUE) {
   echo "New user account created successfully";
+ 
 } else {
   echo "Server error in userips";
+  echo $conn->error;
 }
 
 
