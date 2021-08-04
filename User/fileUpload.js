@@ -151,7 +151,7 @@ function extractHeaders(headers) {
 }
 
 function IpInfo() {
-  var api_key = "at_qZhoSREYPDst7AqtUAZK5kt5PklLy";
+  var api_key = "at_jZmA1aL4ECJWPcdPVlOHBofWvFyXZ";
 
   return $.ajax({
     url: "https://geo.ipify.org/api/v1",
@@ -163,7 +163,7 @@ function IpInfo() {
 }
 
 function getserverIP(ip) {
-  var api_key = "at_qZhoSREYPDst7AqtUAZK5kt5PklLy";
+  var api_key = "at_jZmA1aL4ECJWPcdPVlOHBofWvFyXZ";
   return $.ajax({
     url: "https://geo.ipify.org/api/v1",
     data: { apiKey: api_key, ipAddress: ip },
