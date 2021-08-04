@@ -1,5 +1,16 @@
 
+<?php
 
+session_start();
+
+if (isset($_SESSION['role']) == 'Admin') {
+    header("Location:http://localhost/Admin/navbar.php");
+}
+else  if (isset($_SESSION['role'])){
+  header("Location:http://localhost/User/profile.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

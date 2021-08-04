@@ -13,7 +13,7 @@ $(document).ready(function () {
 
     reader.onload = function (e) {
       var har = JSON.parse(e.target.result);
-
+      console.log(har)
       var entries = har.log.entries;
       var harInfo = {};
 

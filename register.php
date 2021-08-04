@@ -7,7 +7,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 
-$sql = "SELECT * FROM users WHERE username = '$username'";
+$sql = "SELECT * FROM user WHERE username = '$username'";
 $result = $conn->query($sql);
 
 

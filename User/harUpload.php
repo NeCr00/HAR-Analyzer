@@ -47,8 +47,8 @@ foreach ($harEntries as $entry) {
   $res_cache  = extractHeaders($res->responseHeader, 'cache-control');
   $res_expires = extractHeaders($res->responseHeader, 'expires');
   $res_age = extractHeaders($res->responseHeader, 'age');
-  $res_last_modified = $res_expires = extractHeaders($res->responseHeader, 'last-modified');
-  $res_pragma = $res_expires = extractHeaders($res->responseHeader, 'pragma');
+  $res_last_modified = extractHeaders($res->responseHeader, 'last-modified');
+  $res_pragma  = extractHeaders($res->responseHeader, 'pragma');
 
 
   $sql = "INSERT INTO entry (entryId,user_id,startedDateTime,serverIPAddress,wait,method,url,hostRequest,pragmaRequest,

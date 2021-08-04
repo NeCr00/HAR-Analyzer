@@ -4,10 +4,7 @@ include "dbconn.php";
 
 session_start();
 
-if (isset($_SESSION['username'])){
-    Header("Location:http://localhost/User/user.php");
-    exit();
-}
+
 
 $username = $_POST['username'];
 $password = $_POST['password'];

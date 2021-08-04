@@ -2,11 +2,15 @@
 
 session_start();
 
-if (isset($_SESSION['username'])){
-    Header("Location:http://localhost/User/userprofile.php");
+if (isset($_SESSION['username']) && $_SESSION['role'] == 'User'){
+    Header("Location:http://localhost/User/profile.php");
     exit();
 }
 
+else if (isset($_SESSION['username']) && $_SESSION['role'] == 'Admin'){
+  Header("Location:http://localhost/Admin/navbar.php");
+  exit();
+}
 ?>
 
 
