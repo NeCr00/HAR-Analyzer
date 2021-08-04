@@ -27,7 +27,7 @@ if (isset($_SESSION['username']) && $_SESSION['role'] == 'Admin') {
         <div class="nav">
             <ul>
                 <li ><a id="link"  href="fileUpload.php">Har Upload</a></li>
-                <li ><a id="link" href="profile.php">Profile Management</a></li>
+                <li ><a id="link" href="userprofile.php">Profile Management</a></li>
                 
                 <li><a id="link" href="results.php">Data Visualization</a></li>
                 <li class="logout"><a id="link" href="/logout.php">Log Out</a></li>
