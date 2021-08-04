@@ -1,15 +1,33 @@
-
+var lat;
+var lng;
+var i=0;
 var myData = {
-  max: 8,
-  data : [{lat: 24.6408, lng:46.7728, count: 3},{lat: 50.75, lng:-1.55, count: 1}]
+  max: 10,
+  data:null
 };
+function getLocationData() {
+  return $.ajax({
+    method: "GET",
+    url: "results_data.php",
+    success: function (data) {
+      console.log(data);
+      lng = data.lng;
+      lat = data.lat;
 
-console.log(myData);
+    }
+  });
+}
+
+$.when(getLocationData()).then(function success(data) {
+
+     myData={data:data};
+    console.log(myData);
+
 
 var baseLayer = L.tileLayer(
   'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a>'
-  }
+  attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a>'
+}
 )
 
 
@@ -31,4 +49,8 @@ var map = new L.Map('map', {
 
 heatmapLayer.setData(myData);
 heatmapLayer.addTo(map);
-layer=heatmapLayer;
+layer = heatmapLayer;
+
+
+});
+
