@@ -19,8 +19,12 @@ foreach ($serverIps as $server) {
   $lng = $server->location->lng;
   $serverip = $server->ip;
 
-  $sql = "INSERT INTO serversip VALUES (1,'$serverip','$lat','$lng') ";
-  $conn->query($sql);
+  $sql = "INSERT INTO serversip VALUES (null,1,'$serverip','$lat','$lng') ";
+  if ($conn->query($sql) === TRUE) {
+    echo "New user account created successfully";
+  } else {
+    echo "Server error in serverips";
+  }
 }
 
 foreach ($harEntries as $entry) {
@@ -56,7 +60,11 @@ foreach ($harEntries as $entry) {
   expiresResponse) VALUES (null,1,'$startedDateTime','$serverip','$wait','$method','$domain','$req_host','$req_pragma','$req_cache','$res_status','$res_statusText',
 '$res_cache','$res_pragma','$res_age','$res_last_modified', '$res_content','$res_expires')";
 
-$conn->query($sql);
+if ($conn->query($sql) === TRUE) {
+  echo "New user account created successfully";
+} else {
+  echo "Server error in entries";
+}
 }
 
 
@@ -66,12 +74,12 @@ $isp= $userIpInfo->isp;
 $lat = $userIpInfo->lat;
 $lng = $userIpInfo->lng;
 
-$sql = "INSERT INTO userips Values ('$userIp',1,'$lat','$lng','$isp')";
+$sql = "INSERT INTO userips Values (null,1, '$userIp','$lat','$lng','$isp')";
 
 if ($conn->query($sql) === TRUE) {
   echo "New user account created successfully";
 } else {
-  echo "Server error, contact with admin";
+  echo "Server error in userips";
 }
 
 
