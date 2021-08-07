@@ -8,7 +8,7 @@ if (isset($_SESSION['username']) && $_SESSION['role'] == 'User'){
 }
 
 else if (isset($_SESSION['username']) && $_SESSION['role'] == 'Admin'){
-  Header("Location:http://localhost/Admin/navbar.php");
+  Header("Location:http://localhost/Admin/basic_info.php");
   exit();
 }
 ?>
