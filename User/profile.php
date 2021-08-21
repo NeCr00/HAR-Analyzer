@@ -31,7 +31,7 @@ $sql = "SELECT * FROM entries where user_id = '$userID' ORDER BY Dates DESC ";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <title>Signup</title>
-    <link rel="stylesheet" href="userprofile.css">
+    <link rel="stylesheet" href="profile.css">
 
     <script defer src="credentials.js"></script>
 
