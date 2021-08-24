@@ -14,7 +14,7 @@ while($row = mysqli_fetch_assoc($result)){
 
 $sql = 'SELECT entry.content_typeResponse, entry.cache_controlResponse,  entry.last_modifiedResponse, entry.expiresResponse,userips.isp FROM entry
 INNER JOIN userips  ON entry.user_id = userips.user_id
-Where entry.last_modifiedResponse != "" AND entry.expiresResponse !=""';
+Where entry.last_modifiedResponse != "" AND entry.expiresResponse !="" AND entry.content_typeResponse != ""';
 
 $result = $conn->query($sql);
 $entries = array();
@@ -23,7 +23,7 @@ while($row=mysqli_fetch_assoc($result)){
     $entries[] = $row;
 }
 
-$sql = 'SELECT DISTINCT content_typeResponse from entry Where entry.last_modifiedResponse != "" AND entry.expiresResponse !=""';
+$sql = 'SELECT DISTINCT content_typeResponse from entry  WHERE content_typeResponse !=""';
 $result = $conn->query($sql);
 $content_type = array();
 
@@ -32,5 +32,18 @@ while($row=mysqli_fetch_assoc($result)){
 }
 
 
-$data = array('Isps' => $isps, 'entries' =>$entries, "content_type"=>$content_type);
+$sql = 'SELECT  cache_controlRequest,cache_controlResponse,content_typeResponse, isp FROM entry WHERE content_typeResponse != ""';
+$result = $conn->query($sql);
+$cache_entries = array();
+
+while($row=mysqli_fetch_assoc($result)){
+    $cache_entries[] = $row;
+}
+
+$sql = 'SELECT cache_controlRequest from entry WHERE  cache_controlRequest LIKE "%max-stale%"';
+$result = $conn->query($sql);
+
+$num_stales = mysqli_num_rows($result);
+
+$data = array('Isps' => $isps, 'entries' =>$entries, "content_type"=>$content_type, "cache_entries" => $cache_entries,"num_max_stales"=>$num_stales);
 echo json_encode($data);
