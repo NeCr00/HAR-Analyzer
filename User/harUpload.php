@@ -53,28 +53,29 @@ foreach ($harEntries as $entry) {
   $res_age = extractHeaders($res->responseHeader, 'age');
   $res_last_modified = extractHeaders($res->responseHeader, 'last-modified');
   $res_pragma  = extractHeaders($res->responseHeader, 'pragma');
-
+  $isp= $userIpInfo->isp;
+  $isp = str_replace(array("'"), " ",$isp);
 
   $sql = "INSERT INTO entry (entryId,user_id,startedDateTime,serverIPAddress,wait,method,url,hostRequest,pragmaRequest,
   cache_controlRequest,status,statusText,cache_controlResponse,pragmaResponse,ageResponse,last_modifiedResponse,content_typeResponse,
-  expiresResponse) VALUES (null,1,'$startedDateTime','$serverip','$wait','$method','$domain','$req_host','$req_pragma','$req_cache','$res_status','$res_statusText',
-'$res_cache','$res_pragma','$res_age','$res_last_modified', '$res_content','$res_expires')";
+  expiresResponse,isp) VALUES (null,1,'$startedDateTime','$serverip','$wait','$method','$domain','$req_host','$req_pragma','$req_cache','$res_status','$res_statusText',
+'$res_cache','$res_pragma','$res_age','$res_last_modified', '$res_content','$res_expires','$isp')";
 
 if ($conn->query($sql) === TRUE) {
   echo "New user account created successfully";
 } else {
-  echo "Server error in entries";
+  echo("Error description: " . $conn -> error);
 }
 }
 
 
 //insert user info
 $userIp = $userIpInfo->ip;
-$isp= $userIpInfo->isp;
+
 $lat = $userIpInfo->lat;
 $lng = $userIpInfo->lng;
 
-$isp = str_replace(array("'"), " ",$isp);
+
 
 
 $sql = "INSERT INTO userips Values (null,1, '$userIp','$lat','$lng','$isp')";

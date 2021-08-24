@@ -20,6 +20,11 @@ body {
   border-bottom: 1px solid #888;
 
 }
+.logo{
+  float: left;
+  width: 80px;
+ 
+}
  
 .nav a {
   text-decoration: none;
@@ -42,10 +47,10 @@ body {
   .nav li {
     width: 300px;
     border-bottom: none;
-    height: 50px;
+    height: 60px;
     line-height: 50px;
     font-size: 1.4em;
-   
+    
   }
  
   /* Option 1 - Display Inline */
@@ -55,7 +60,8 @@ body {
   }
  
   .logout {
-    float: right;
+    display: inline-block;
+    
   }
   /* Options 2 - Float
   .nav li {

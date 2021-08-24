@@ -25,7 +25,11 @@ if (isset($_SESSION['username']) && $_SESSION['role'] == 'Admin') {
 <body class="news">
     <header>
         <div class="nav">
+        <div class =logo>
+                
+                </div>
             <ul>
+            <li style="float:left;"><img class=logo src="../images/logo.png"></li>
                 <li ><a id="link"  href="fileUpload.php">Har Upload</a></li>
                 <li ><a id="link" href="profile.php">Profile Management</a></li>
                 
