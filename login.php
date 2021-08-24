@@ -29,7 +29,8 @@ else if (isset($_SESSION['username']) && $_SESSION['role'] == 'Admin'){
 
 <body>
   <main id="main-holder">
-    <h1 id="login-header">Welcome to HAR Analyzer </h1>
+ 
+    <img src="/images/logo.png">
     
 <!--    <div id="login-error-msg-holder">
       <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>

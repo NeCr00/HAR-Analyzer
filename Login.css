@@ -14,12 +14,9 @@ html {
     background-color: #ffe9f8;
   }
 
-  #login-header{
-    color: whitesmoke;
-    margin-top: 10px;
-    font-size: 50px;
-    font-weight: 1000;
-    text-shadow: 10px 10px black;
+  img{
+    margin-bottom:20px;
+    width: 250px;
   }
 
 
