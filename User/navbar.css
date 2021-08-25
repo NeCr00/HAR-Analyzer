@@ -60,8 +60,12 @@ body {
   }
  
   .logout {
-    display: inline-block;
-    
+    width:20px;
+    float:right;
+  }
+  img{
+    text-align: center;
+    width:25px;
   }
   /* Options 2 - Float
   .nav li {
