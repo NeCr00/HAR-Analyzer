@@ -40,8 +40,10 @@ $(document).ready(function () {
   
     $("#submit").click(function (e) {
       e.preventDefault();
+      console.log("sending")
       var username = $("#username").val();
       var password = $("#password1").val();
+      var email = $("#email").val();
       var correct = formValidation();
   
       if (username && password && correct ) {
@@ -51,11 +53,13 @@ $(document).ready(function () {
           data: {
             username: username,
             password: password,
+            email:email
           },
   
           success: function (data) {
            
             $("#message").text(data);
+
           },
           error: function (err) {
             alert("There is an error" + er);
@@ -63,8 +67,8 @@ $(document).ready(function () {
         });
       }
       else {
+         $("#message").text("Fill all the fields correct");
         
-        alert("Fill all the fields correct");
         
       }
      
