@@ -34,7 +34,7 @@ if (isset($_SESSION['username']) && $_SESSION['role'] == 'User') {
                 <li><a id="link" href="response_analysis.php">Response Analysis</a></li>
                 <li><a id="link" href="header_analysis.php">HTTP Header Analysis</a></li>
                 <li><a id="link" href="data_vis.php">Data Visualization</a></li>
-                <li class="logout"><a id="link" href="/logout.php">Log Out</a></li>
+                <li class=logout><a id="link" href="/logout.php">Log Out <img  src="../images/logout.png"/></a></li>
             </ul>
 
 
