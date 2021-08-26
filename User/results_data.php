@@ -3,8 +3,9 @@
 include('../dbconn.php');
 
 session_start();
+$userID = $_SESSION['userID'];
 
-$sql = "SELECT lat,lng,count(*) as c FROM serversip  WHERE user_id= '1' GROUP BY lat,lng";
+$sql = "SELECT lat,lng,count(*) as c FROM serversip  WHERE user_id= '$userID' GROUP BY lat,lng";
 $result = $conn->query($sql);
 
 

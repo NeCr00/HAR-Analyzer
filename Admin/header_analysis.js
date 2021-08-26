@@ -83,6 +83,7 @@ $(document).ready(function () {
 
       makeHistogram(filteredData);
       getCacheability(data.cache_entries, selectedContent, selectedIsp);
+      getStaleAndFresh(data.cache_entries, selectedContent, selectedIsp)
     });
   });
 });
@@ -132,6 +133,7 @@ function getAgeExpires(date1, date2) {
 }
 
 function makeHistogram(filteredData) {
+  console.log(filteredData.length)
   google.charts.load("current", { packages: ["corechart"] });
   google.charts.setOnLoadCallback(drawChart);
   function drawChart() {

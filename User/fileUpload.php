@@ -10,6 +10,7 @@
     <title>Upload Har File</title>
     <link rel="stylesheet" href="fileUpload.css">
     <script defer src="fileUpload.js"></script>
+    
 </head>
 
 <body>
@@ -33,10 +34,11 @@
                         <input type="checkbox" id= checkbox2>
                         <span class="checkmark"></span>
                     </label>
+                    <div class = alert id=alert> </div>
                 </div>
                 <button id="upload" class=myButton>Upload</button>
             </div>
-           
+            
         </div>
 
       

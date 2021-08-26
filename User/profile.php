@@ -1,24 +1,5 @@
-<?php 
-include "navbar.php"; 
-include('../dbconn.php');
-
-
-
-
-//AUTO PREPEI NA ALLAKSEI OPSDIPOTE !!!!!!!! ///
-$userID = $_SESSION['userID'];
-$sql = "SELECT * FROM user WHERE user_id= '$userID' ";
-$result = $conn->query($sql);
-$row = mysqli_fetch_array($result);
-$user = $row['username'];
-$sql = ("SELECT COUNT(*) FROM user");
-$result = $conn->query($sql);
-$row = mysqli_fetch_array($result);
-$eggrafes = $row['COUNT(*)'];
-$sql = "SELECT * FROM entries where user_id = '$userID' ORDER BY Dates DESC ";
-
-//AUTO PREPEI NA ALLAKSEI OPSDIPOTE !!!!!!!! ///
-
+<?php
+include "navbar.php";
 
 
 
@@ -33,52 +14,119 @@ $sql = "SELECT * FROM entries where user_id = '$userID' ORDER BY Dates DESC ";
     <title>Signup</title>
     <link rel="stylesheet" href="profile.css">
 
-    <script defer src="credentials.js"></script>
+    <script defer src="profile.js"></script>
 
 </head>
 
 <body>
-    <div box>
-        <div class="card-container">
-            <img class="round" src="/images/user.png" alt="user" />
-            <h3 class="titles">Username <?php echo $user;?></h3>
+    <!-- Main -->
+    <div class="main">
+        <h2 id=profile> </h2>
+        <div class="card">
+            <div class="card-body">
+                <i class="fa fa-pen fa-xs edit"></i>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Username :</td>
 
-            <div class="box">
-                <h3 class=titles> New Username </h3>
-                <input type="text" name="username" class="signup-form-field" id="username" placeholder="">
-                <button class="primary" id="submit_username">Sumbit</button>
-            </div>
+                            <td id="username">ImDezCode</td>
+                        </tr>
+                        <tr>
+                            <td>Email :</td>
 
+                            <td id="email">imdezcode@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>Account Type :</td>
 
-            <p class=titles>Password</p>
-            <input type="password" name="password" id="password1" class="signup-form-field" placeholder="">
-            <p class="alert" id=alert1> </p>
+                            <td>User Account</td>
+                        </tr>
+                        <tr>
+                            <td>Last Upload :</td>
 
-            <p class=titles>Re-enter Password</p>
-            <input type="password" id="password2" class="signup-form-field" placeholder="">
+                            <td id="last_upload"> You have not uploaded yet</td>
+                        </tr>
+                        <tr>
+                            <td>Number of Entries :</td>
 
-            <p class="alert" id="alert2"> </p>
-            <p class="alert" id="message"></p>
+                            <td id=entries> 0</td>
+                        </tr>
 
-
-            <button class="button-sign" id="submit_password">Sumbit</button>
-
-            
-            <div class="skills">
-                <h6>Στατιστικά δεδομένα</h6>
-                <ul>
-                    <li>Τελευταίο upload: 4/20/69</li>
-                    <li>Πλήθος εγγραφών: <?php echo $eggrafes;?></li>
-
-                </ul>
-            </div>
-
-
-            <div>
-                <p class="alert" id="message"></p>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div>
+
+        <!-- End -->
+        <div class=big-container>
+            <div>
+
+
+                <div class="main-small"  id=box1>
+                    <h2>Change Password</h2>
+                    <div class="card-small">
+                        <div class="card-body">
+
+                            <table>
+
+                                <div class="container">
+                                    <div class=input-container>
+                                        
+                                        <input type="password" placeholder="Your new Password" id=password1>
+                                        <p class="alert" id=alert1> </p>
+                                    </div>
+
+                                    <div class=input-container>
+                                        <input type="password" placeholder="Re-type your Password" id=password2>
+                                        <p class="alert" id="alert2"> </p>
+                                    </div>
+                                </div>
+                                <div class=button>
+                                    <button class=but id=submit-pass> Apply</button>
+
+                                </div>
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="main-small1"  id=box2>
+                <h2>Change Username</h2>
+                    <div class="card-small1">
+                        <div class="card-body">
+
+                            <table>
+
+                                <div class="container">
+                                    <div class=input-container>
+                                        <input id="username-input" type="text" placeholder="Your new Username" >
+                                        <p class="alert" id="alert3"> </p>
+                                    </div>
+
+                                </div>
+                                <div class=button>
+                                    <button class=but id=submit-username> Apply</button>
+
+                                </div>
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+          
+            <div class="but-container">
+            <button class="but-new" id=but2>Change Username</button>
+            
+            <button class="but-new" id=but1>Change Password</button>
+            </div>
+          
 </body>
 
 

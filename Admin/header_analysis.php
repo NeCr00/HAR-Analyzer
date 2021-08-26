@@ -68,7 +68,7 @@ include('navbar.php');
 
                 </tr>
                 <tr>
-                    <td>Percentage of max-stale the total number of applications per CONTENT-TYPE</td>
+                    <td>Percentage of max-stale on the total number of applications per CONTENT-TYPE</td>
                     <td id="max_stales"></td>
 
                 </tr>

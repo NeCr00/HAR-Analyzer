@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
   <style>
         #map { width: 1000px; height: 1000px; margin: 0 auto;}
-        body{margin: 0 auto; text-align: center;}
+        body{margin: 0 auto; text-align: center; background-color: #e8f5ff;}
     </style>
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/heatmapjs@2.0.2/heatmap.js"></script>

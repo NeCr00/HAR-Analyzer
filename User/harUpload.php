@@ -1,14 +1,16 @@
 <?php
 
 include('../dbconn.php');
-
+session_start();
 header('Content-Type: text/plain');
 
 $data = ($_POST['data']); // Don't forget the encoding
 
+$userID = $_SESSION['userID'];
+
 $data =  json_decode($data);
 
-//echo $test->info->userIpInfo->IpInfo->ip;
+
 
 $userIpInfo = $data->info->userIpInfo->IpInfo;
 $serverIps = $data->serverIpsInfo;
@@ -19,7 +21,7 @@ foreach ($serverIps as $server) {
   $lng = $server->location->lng;
   $serverip = $server->ip;
 
-  $sql = "INSERT INTO serversip VALUES (null,1,'$serverip','$lat','$lng') ";
+  $sql = "INSERT INTO serversip VALUES (null,'$userID','$serverip','$lat','$lng') ";
   if ($conn->query($sql) === TRUE) {
     echo "New user account created successfully";
   } else {
@@ -58,7 +60,7 @@ foreach ($harEntries as $entry) {
 
   $sql = "INSERT INTO entry (entryId,user_id,startedDateTime,serverIPAddress,wait,method,url,hostRequest,pragmaRequest,
   cache_controlRequest,status,statusText,cache_controlResponse,pragmaResponse,ageResponse,last_modifiedResponse,content_typeResponse,
-  expiresResponse,isp) VALUES (null,1,'$startedDateTime','$serverip','$wait','$method','$domain','$req_host','$req_pragma','$req_cache','$res_status','$res_statusText',
+  expiresResponse,isp) VALUES (null,'$userID','$startedDateTime','$serverip','$wait','$method','$domain','$req_host','$req_pragma','$req_cache','$res_status','$res_statusText',
 '$res_cache','$res_pragma','$res_age','$res_last_modified', '$res_content','$res_expires','$isp')";
 
 if ($conn->query($sql) === TRUE) {
@@ -78,7 +80,7 @@ $lng = $userIpInfo->lng;
 
 
 
-$sql = "INSERT INTO userips Values (null,1, '$userIp','$lat','$lng','$isp')";
+$sql = "INSERT INTO userips Values (null,'$userID', '$userIp','$lat','$lng','$isp')";
 
 if ($conn->query($sql) === TRUE) {
   echo "New user account created successfully";

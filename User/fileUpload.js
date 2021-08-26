@@ -13,7 +13,7 @@ $(document).ready(function () {
 
     reader.onload = function (e) {
       var har = JSON.parse(e.target.result);
-      console.log(har)
+      console.log(har);
       var entries = har.log.entries;
       var harInfo = {};
 
@@ -59,55 +59,66 @@ $(document).ready(function () {
     var num = 0;
     UserInfo = { info, serverIpsInfo, editedHar };
 
-    if (document.getElementById("checkbox1").checked) {
-      $.when(IpInfo()).then(function success(data) {
-        info["userIpInfo"] = {
-          IpInfo: {
-            ip: data.ip,
-            isp: data.isp,
-            lat: data.location.lat,
-            lng: data.location.lng,
-          },
-        };
-        // console.log(info);
-        for (ip in serverIP) {
-          $.when(getserverIP(serverIP[ip])).then(function success(data) {
-            serverIpsInfo[num] = data;
-            num++;
-          });
-        }
+    if (editedHar) {
+      $("#upload").html("Uploading ...");
+      $('#alert').html("")
+      if (document.getElementById("checkbox1").checked) {
+        $.when(IpInfo()).then(function success(data) {
+          info["userIpInfo"] = {
+            IpInfo: {
+              ip: data.ip,
+              isp: data.isp,
+              lat: data.location.lat,
+              lng: data.location.lng,
+            },
+          };
+          // console.log(info);
+          for (ip in serverIP) {
+            $.when(getserverIP(serverIP[ip])).then(function success(data) {
+              serverIpsInfo[num] = data;
+              num++;
+            });
+          }
 
+          setTimeout(function () {
+            UserInfo = { info, serverIpsInfo, editedHar };
+
+            $.ajax({
+              type: "POST",
+              url: "http://localhost/User/harUpload.php",
+              data: { data: JSON.stringify(UserInfo) },
+              success: function (data) {
+                console.log(data);
+                console.log(UserInfo);
+                $("#upload").html("Upload");
+                $('#alert').html("Your Har file has been uploaded successfully !")
+              },
+              error: function (err) {
+                console.log(err);
+              },
+            });
+          }, 3500);
+        });
+      }
+
+      if (document.getElementById("checkbox2").checked) {
         setTimeout(function () {
-          UserInfo = { info, serverIpsInfo, editedHar };
-
-          $.ajax({
-            type: "POST",
-            url: "http://localhost/User/harUpload.php",
-            data: { data: JSON.stringify(UserInfo) },
-            success: function (data) {
-              console.log(data);
-              console.log(UserInfo);
-            },
-            error: function (err) {
-              console.log(err);
-            },
-          });
-        }, 3500);
-      });
+          var dataStr =
+            "data:application/json;charset=utf-8," +
+            encodeURIComponent(JSON.stringify(editedHar, null, 2));
+          var downloadAnchorNode = document.createElement("a");
+          downloadAnchorNode.setAttribute("href", dataStr);
+          downloadAnchorNode.setAttribute("download", "test" + ".har");
+          document.body.appendChild(downloadAnchorNode); // required for firefox
+          downloadAnchorNode.click();
+          downloadAnchorNode.remove();
+          $("#upload").html("Upload");
+        }, 2000);
+      }
     }
-
-    if (document.getElementById("checkbox2").checked) {
-      setTimeout(function () {
-        var dataStr =
-          "data:application/json;charset=utf-8," +
-          encodeURIComponent(JSON.stringify(editedHar, null, 2));
-        var downloadAnchorNode = document.createElement("a");
-        downloadAnchorNode.setAttribute("href", dataStr);
-        downloadAnchorNode.setAttribute("download", "test" + ".har");
-        document.body.appendChild(downloadAnchorNode); // required for firefox
-        downloadAnchorNode.click();
-        downloadAnchorNode.remove();
-      }, 2000);
+    else
+    {
+      $('#alert').html("Select a Har File Please !")
     }
   });
 });
