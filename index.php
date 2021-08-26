@@ -7,7 +7,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 else if (isset($_SESSION['role']) == 'User'){
-    header("Location:http://localhost/User/user.php");
+    header("Location:http://localhost/User/profile.php");
 }
 
 else if (isset($_SESSION['role']) == 'Admin'){
