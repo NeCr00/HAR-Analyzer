@@ -1,22 +1,19 @@
 $(document).ready(function () {
-
-  $.when(getUserInfo()).then(function success(data){
-
+  $.when(getUserInfo()).then(function success(data) {
     $("#username").text(data.username);
     $("#email").text(data.email);
-   
+
     $("#last_upload").text(data.last_date);
     $("#entries").text(data.num_entries);
-    
 
-    $("#profile").text(data.username +" Profile")
+    $("#profile").text(data.username + " Profile");
 
     $("#password1,#password2").on("keyup", function (correct) {
       var password1 = $("#password1").val();
       var password2 = $("#password2").val();
       var regularExpression =
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-  
+
       if (password1 != password2) {
         $("#alert1").text("Password is not the same");
         $("#alert2").text("Password is not the same");
@@ -28,14 +25,14 @@ $(document).ready(function () {
         $("#alert2").text(" ");
       }
     });
-  
+
     function formValidation() {
       correct = 0;
       var password1 = $("#password1").val();
       var password2 = $("#password2").val();
       var regularExpression =
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-  
+
       if (
         password1 &&
         password2 &&
@@ -44,10 +41,10 @@ $(document).ready(function () {
       ) {
         correct = 1;
       }
-  
+
       return correct;
     }
-  
+
     $("#submit-pass").click(function (e) {
       e.preventDefault();
       var password = $("#password1").val();
@@ -61,26 +58,26 @@ $(document).ready(function () {
             password: password,
             type: "password",
           },
-  
+
           success: function (data) {
-            $('#alert2').text(data);
+            $("#alert2").text(data);
           },
           error: function (err) {
             alert("There is an error" + er);
           },
         });
       } else {
-        $('#alert2').text("Please Fill all the Fields");
+        $("#alert2").text("Please Fill all the Fields");
       }
     });
-  
+
     $("#submit-username").click(function (e) {
-      
       e.preventDefault();
       var username = $("#username-input").val();
       
+
       if (username) {
-        $('#alert3').text("Changing ...");
+        $("#alert3").text("Changing ...");
         $.ajax({
           method: "POST",
           url: "http://localhost/User/credentials.php",
@@ -88,41 +85,46 @@ $(document).ready(function () {
             username: username,
             type: "username",
           },
-  
+
           success: function (data) {
-            $('#alert3').text(data);
+            if(data.includes("success")){
+              $("#profile").text(username + " Profile");
+              $("#username").text(username);
+            }
+           
+            $("#alert3").text(data);
           },
           error: function (err) {
             alert("There is an error" + er);
           },
         });
       } else {
-        $('#alert3').text("Please type a new Usename");
+        $("#alert3").text("Please type a new Usename");
       }
     });
-  
+
     $("#but1").click(function () {
       $("#box1").slideToggle();
     });
-  
+
     $("#but2").click(function () {
       $("#box2").slideToggle();
     });
-  
+
     // settimeout(function(){
     //   document.getElementById("box1").click();
     // document.getElementById("box2").click();
     // },200)
-  
+
     document.getElementById("but1").click();
     document.getElementById("but2").click();
-  
+
     $("#password1,#password2").on("keyup", function (correct) {
       var password1 = $("#password1").val();
       var password2 = $("#password2").val();
       var regularExpression =
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-  
+
       if (password1 != password2) {
         $("#alert1").text("Password is not the same");
         $("#alert2").text("Password is not the same");
@@ -134,14 +136,14 @@ $(document).ready(function () {
         $("#alert2").text(" ");
       }
     });
-  
+
     function formValidation() {
       correct = 0;
       var password1 = $("#password1").val();
       var password2 = $("#password2").val();
       var regularExpression =
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-  
+
       if (
         password1 &&
         password2 &&
@@ -150,32 +152,25 @@ $(document).ready(function () {
       ) {
         correct = 1;
       }
-  
+
       return correct;
     }
-    
-  })
-
-
-
-
-
+  });
 });
 
-
-function getUserInfo(){
+function getUserInfo() {
   return $.ajax({
     method: "GET",
-    url:"http://localhost/User/credentials.php",
-    data:{
-      type:"credentials",
+    url: "http://localhost/User/credentials.php",
+    data: {
+      type: "credentials",
     },
-  
-    success: function(data){
+
+    success: function (data) {
       console.log(data);
     },
     error: function (err) {
       console.log(err.responseText);
-    }
-  })
+    },
+  });
 }

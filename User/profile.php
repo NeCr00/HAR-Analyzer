@@ -30,12 +30,12 @@ include "navbar.php";
                         <tr>
                             <td>Username :</td>
 
-                            <td id="username">ImDezCode</td>
+                            <td id="username"></td>
                         </tr>
                         <tr>
                             <td>Email :</td>
 
-                            <td id="email">imdezcode@gmail.com</td>
+                            <td id="email"></td>
                         </tr>
                         <tr>
                             <td>Account Type :</td>

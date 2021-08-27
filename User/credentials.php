@@ -16,15 +16,17 @@ $type = $_POST['type'];
     $user_username = $row['username'];
     $user_password = $row['password'];
 
-    $sql = "SELECT username FROM user WHERE username= '$username' ";
-    $result = $conn->query($sql);
-    $row = mysqli_fetch_array($result);
-
-    $searched_username = $row["username"];
+ 
 
     if ($type == 'username') {
-
         $username = $_POST['username'];
+        $sql = "SELECT username FROM user WHERE username= '$username' ";
+        $result = $conn->query($sql);
+        $row = mysqli_fetch_array($result);
+    
+        $searched_username = $row["username"];
+
+       
 
         if ($username == $user_username) {
             echo "Username cannot be the same as before !";
