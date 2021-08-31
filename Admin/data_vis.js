@@ -99,7 +99,7 @@ for (i = 0; i < l; i++) {
        var flightPath = new google.maps.Polyline({
   path: [ltlng[i],ltlng[i+1]],
   geodesic: true,
-  strokeColor: '#4986E7',
+  strokeColor: 'yellow',
   strokeOpacity: 1.0,
   strokeWeight: count[i]
        });

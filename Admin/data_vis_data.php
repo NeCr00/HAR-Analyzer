@@ -5,7 +5,7 @@ include('../dbconn.php');
 session_start();
 $userID = $_SESSION['userID'];
 
-$sql = "SELECT userips.ulat,userips.ulng,serversip.slat,serversip.slng,count(*) as c FROM userips LEFT JOIN serversip ON userips.user_id=serversip.user_id GROUP BY serversip.slat,serversip.slng ORDER BY userips.ulat,userips.ulng DESC";
+$sql = "SELECT userips.ulat,userips.ulng,serversip.slat,serversip.slng,count(*) as c FROM userips LEFT JOIN serversip ON userips.user_id=serversip.user_id GROUP BY serversip.slat,serversip.slng AND userips.ulat,userips.ulng ORDER BY userips.ulat,userips.ulng DESC";
 $result = $conn->query($sql);
 
 
