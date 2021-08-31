@@ -11,8 +11,8 @@ function getLocationData() {
     url: "results_data.php",
     success: function (data) {
       console.log(data);
-      lng = data.lng;
-      lat = data.lat;
+      lng = data.slng;
+      lat = data.slat;
 
     }
   });
@@ -34,8 +34,8 @@ var baseLayer = L.tileLayer(
 var cfg = {
   "radius": 40,
   "useLocalExtrema": true,
-  latField: 'lat',
-  lngField: 'lng',
+  latField: 'slat',
+  lngField: 'slng',
   valueField: 'count'
 };
 var heatmapLayer = new HeatmapOverlay(cfg);
@@ -43,7 +43,7 @@ var heatmapLayer = new HeatmapOverlay(cfg);
 
 var map = new L.Map('map', {
   center: new L.LatLng(39.275, -76.613),
-  zoom: 15,
+  zoom: 3,
   layers: [baseLayer, heatmapLayer]
 })
 
