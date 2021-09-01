@@ -99,27 +99,41 @@ function getInfo() {
 function getAge(contents, isps, entries) {
   var xValues = Array(["Content-Type", "Age"]);
 
+  console.log(entries.length)
+  entries = entries.filter((value) =>
+  isps.find(data=>data.includes(value.isp))
+);
+
+  entries = entries.filter((value) =>
+    contents.find(data=>data.includes(value.content_typeResponse))
+  );
+
+  console.log(entries)
   entries.forEach((value) => {
-    var isp = value.isp; //take isp
+    
     var content = value.content_typeResponse; //take content type response
     var maxAge = 0;
     var cache_control = value.cache_controlResponse; //get max-age from string
     cache_control = cache_control.split(",");
-    cache_control.forEach((value) => {
-      if (value.includes("max-age")) {
-        value = value.replace(/\D/g, "");
-        maxAge = parseInt(value);
-      } else
-        maxAge = getAgeExpires(
-          value.last_modifiedResponse,
-          value.expiresResponse
-        );
+    console.log(cache_control)
+    cache_control.forEach((data) => {
+      if (data.includes("max-age")) {
+        data = data.replace(/\D/g, "");
+        maxAge = parseInt(data);
+      } 
     });
 
-    //check filters
-    if (contents.indexOf(content) > -1 && isps.indexOf(isp) > -1) {
-      xValues.push(Array(content, maxAge));
+    if(maxAge == 0){
+      maxAge = getAgeExpires(
+        value.last_modifiedResponse,
+        value.expiresResponse
+      );
     }
+       
+    
+   
+      xValues.push(Array(content, maxAge));
+    
   });
 
   return xValues;
