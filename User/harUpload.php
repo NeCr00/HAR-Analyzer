@@ -60,7 +60,7 @@ foreach ($harEntries as $entry) {
 
   $sql = "INSERT INTO entry (entryId,user_id,startedDateTime,serverIPAddress,wait,method,url,hostRequest,pragmaRequest,
   cache_controlRequest,status,statusText,cache_controlResponse,pragmaResponse,ageResponse,last_modifiedResponse,content_typeResponse,
-  expiresResponse,isp) VALUES (null,'$userID','$startedDateTime','$serverip','$wait','$method','$domain','$req_host','$req_pragma','$req_cache','$res_status','$res_statusText',
+  expiresResponse,isp) VALUES (null,'$userID','$startedDateTime','$serverIP','$wait','$method','$domain','$req_host','$req_pragma','$req_cache','$res_status','$res_statusText',
 '$res_cache','$res_pragma','$res_age','$res_last_modified', '$res_content','$res_expires','$isp')";
 
 if ($conn->query($sql) === TRUE) {

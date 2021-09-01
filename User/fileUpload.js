@@ -20,13 +20,14 @@ $(document).ready(function () {
       for (var entrie in entries) {
         myEntrie = entries[entrie];
 
-        const startedDateTime = myEntrie.startedDateTime;
-        const timings = myEntrie.timings.wait;
-        const serverIP = myEntrie.serverIPAddress;
+        var startedDateTime = myEntrie.startedDateTime;
+        var timings = myEntrie.timings.wait;
+        var serverIP = myEntrie.serverIPAddress;
+        console.log(serverIP);
         serverIPs.push(serverIP);
         //request
-        const methodReq = myEntrie.request.method;
-        const domainReq = new URL(myEntrie.request.url).hostname;
+        var methodReq = myEntrie.request.method;
+        var domainReq = new URL(myEntrie.request.url).hostname;
         //request headers
         var headers = myEntrie.request.headers;
         var requestHeader = extractHeaders(headers);
@@ -34,8 +35,8 @@ $(document).ready(function () {
         //     console.log(requestHeader)
 
         //response
-        const statusRes = myEntrie.response.status;
-        const statusTextRes = myEntrie.response.statusText;
+        var statusRes = myEntrie.response.status;
+        var statusTextRes = myEntrie.response.statusText;
         headers = myEntrie.response.headers;
         var responseHeader = extractHeaders(headers);
         // console.log(entries[entrie].request.headers);
