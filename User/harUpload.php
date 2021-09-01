@@ -16,18 +16,7 @@ $userIpInfo = $data->info->userIpInfo->IpInfo;
 $serverIps = $data->serverIpsInfo;
 $harEntries = $data->editedHar->HarInformation;
 //add server ips  
-foreach ($serverIps as $server) {
-  $lat = $server->location->lat;
-  $lng = $server->location->lng;
-  $serverip = $server->ip;
 
-  $sql = "INSERT INTO serversip VALUES (null,'$userID','$serverip','$lat','$lng') ";
-  if ($conn->query($sql) === TRUE) {
-    echo "New user account created successfully";
-  } else {
-    echo "Server error in serverips";
-  }
-}
 
 foreach ($harEntries as $entry) {
   $req = $entry->requestInfo;
@@ -90,6 +79,31 @@ if ($conn->query($sql) === TRUE) {
   echo $conn->error;
 }
 
+
+foreach ($serverIps as $server) {
+  $lat = $server->location->lat;
+  $lng = $server->location->lng;
+  $serverip = $server->ip;
+
+  if($serverip!=$userIp){
+
+  $sql = "SELECT count(entry.serverIPAddress) as c FROM entry WHERE entry.serverIPAddress='$serverip' OR entry.serverIPAddress='[$serverip]'";
+  $result = $conn->query($sql);
+
+
+  if (mysqli_num_rows($result) > 0){
+    $row = $result->fetch_assoc();
+    $count = $row['c'];
+  }
+
+  $sql = "INSERT INTO serversip VALUES (null,'$userID','$serverip','$lat','$lng','$count') ";
+  if ($conn->query($sql) === TRUE) {
+    echo "New user account created successfully";
+  } else {
+    echo "Server error in serverips";
+  }
+ }
+}
 
 function extractHeaders($data, $variable)
 {

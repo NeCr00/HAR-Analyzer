@@ -11,8 +11,8 @@ function getLocationData() {
     url: "results_data.php",
     success: function (data) {
       console.log(data);
-      lng = data.slng;
-      lat = data.slat;
+      lng = data.lng;
+      lat = data.lat;
 
     }
   });
@@ -34,8 +34,8 @@ var baseLayer = L.tileLayer(
 var cfg = {
   "radius": 40,
   "useLocalExtrema": true,
-  latField: 'slat',
-  lngField: 'slng',
+  latField: 'lat',
+  lngField: 'lng',
   valueField: 'count'
 };
 var heatmapLayer = new HeatmapOverlay(cfg);
