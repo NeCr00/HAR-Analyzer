@@ -29,21 +29,17 @@ $.when(getLocationData()).then(function success(data) {
     var count = [];
 
 //users
-    ultlng.push(new google.maps.LatLng(data[0].ulat, data[0].ulng));
-for (var i = 1; i < data.length; i++) {
-     if(data[i].ulat!=data[i-1].ulat && data[i].ulng!=data[i-1].ulng)
-     {
-      ultlng.push(new google.maps.LatLng(data[i].ulat, data[i].ulng));
-      console.log(data[i].ulat, data[i].ulng);
-    }
-    }
+   
 
 //request
-    for (var i = 0; i < data.length; i++) {    
+    for (var i = 0; i < data.length; i++) {  
+      
+    ultlng.push(new google.maps.LatLng(data[i].ulat, data[i].ulng));
     ltlng.push(new google.maps.LatLng(data[i].slat, data[i].slng));
-   // console.log(data[i].slat, data[i].slng);
-    count.push(data[i].c);
-   // console.log(count[i]);
+  
+    console.log(data[i].count);
+    count.push(data[i].count);
+    
     }
 
  //normalize
@@ -57,7 +53,7 @@ for (i = 0; i < l; i++) {
 
 
     var myOptions = {
-        zoom: 6,
+        zoom: 4,
         center: ultlng[0],
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -97,7 +93,7 @@ for (i = 0; i < l; i++) {
 
     for (var i = 0; i < data.length-1; i++) {
        var flightPath = new google.maps.Polyline({
-  path: [ltlng[i],ltlng[i+1]],
+  path: [ultlng[i],ltlng[i]],
   geodesic: true,
   strokeColor: 'yellow',
   strokeOpacity: 1.0,
