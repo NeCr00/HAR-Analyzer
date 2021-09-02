@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2021 at 09:31 PM
+-- Generation Time: Sep 02, 2021 at 07:36 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -35,7 +35,7 @@ CREATE TABLE `entry` (
   `serverIPAddress` varchar(255) DEFAULT NULL,
   `lat` varchar(255) DEFAULT NULL,
   `lng` varchar(255) DEFAULT NULL,
-  `wait` int(11) DEFAULT NULL,
+  `wait` float DEFAULT NULL,
   `method` enum('GET','POST','PUT','HEAD','DELETE','CONNECT','OPTIONS','TRACE','PATCH') DEFAULT NULL,
   `url` varchar(2083) DEFAULT NULL,
   `hostRequest` varchar(255) DEFAULT NULL,
@@ -146,13 +146,13 @@ ALTER TABLE `userips`
 -- AUTO_INCREMENT for table `entry`
 --
 ALTER TABLE `entry`
-  MODIFY `entryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=323;
+  MODIFY `entryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1324;
 
 --
 -- AUTO_INCREMENT for table `serversip`
 --
 ALTER TABLE `serversip`
-  MODIFY `server_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `server_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -164,7 +164,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `userips`
 --
 ALTER TABLE `userips`
-  MODIFY `id_ip` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_ip` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
