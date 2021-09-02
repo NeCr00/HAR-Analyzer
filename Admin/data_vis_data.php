@@ -9,7 +9,7 @@ $userID = $_SESSION['userID'];
 $data = array();
 
 
-$sql = "SELECT userips.lat as ulat,userips.lng as ulng,serversip.lat as slat,serversip.lng as slng,serversip.count as c FROM userips INNER JOIN serversip ON userips.user_id=serversip.user_id ORDER BY serversip.lat,serversip.lng";
+$sql = "SELECT userips.lat as ulat,userips.lng as ulng,serversip.lat as slat,serversip.lng as slng,sum(serversip.count) as c FROM userips INNER JOIN serversip ON userips.user_id=serversip.user_id GROUP BY serversip.lat,serversip.lng,serversip.user_id ORDER BY userips.lat,userips.lng,serversip.lat,serversip.lng";
 $result = $conn->query($sql);
 
 
