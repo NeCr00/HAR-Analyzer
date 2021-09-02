@@ -67,18 +67,25 @@ $lat = $userIpInfo->lat;
 $lng = $userIpInfo->lng;
 
 
+$sql = "SELECT user_ip FROM userips WHERE user_ip='$userIp'";
+$result = $conn->query($sql);
 
 
-$sql = "INSERT INTO userips Values (null,'$userID', '$userIp','$lat','$lng','$isp')";
-
-if ($conn->query($sql) === TRUE) {
-  echo "New user account created successfully";
- 
-} else {
-  echo "Server error in userips";
-  echo $conn->error;
+if (mysqli_num_rows($result) > 0){
+  echo "userip already exists";
 }
 
+else{
+ $sql = "INSERT INTO userips Values (null,'$userID', '$userIp','$lat','$lng','$isp')";
+
+ if ($conn->query($sql) === TRUE) {
+   echo "New user account created successfully";
+ 
+ } else {
+   echo "Server error in userips";
+   echo $conn->error;
+ }
+}
 
 foreach ($serverIps as $server) {
   $lat = $server->location->lat;
