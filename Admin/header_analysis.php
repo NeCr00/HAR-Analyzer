@@ -30,7 +30,7 @@ include('navbar.php');
         </div>
 
         <div class="contentSelector">
-            <h2> Choose Content-Type</h2>
+            <h2> Choose ISP</h2>
             <div id=isp class=contentType>
 
             </div>

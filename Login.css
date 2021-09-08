@@ -12,6 +12,8 @@ html {
     justify-items: center;
     align-items: center;
     background-color: #ffe9f8;
+    background-repeat: no-repeat;
+    
   }
 
   img{
@@ -30,7 +32,7 @@ html {
 
   #login-form{
     width: 40%;
-    background-color: #06021b83;
+    background-color: #06021b;
     border: 3px solid #e4e4e4d2;
     border-radius: 10px;
     border-style: double;
@@ -56,7 +58,7 @@ input[type="text"], input[type="password"] {
     font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif, 'Times New Roman', Times, serif;
     text-align: left;
     color: rgb(16, 17, 17);
-      
+    font-size: 18px;
   }
 
 

@@ -2,6 +2,7 @@ $(document).ready(function () {
   const harFile = document.getElementById("harFile");
   var editedHar;
   var serverIPs = [];
+  var  fileName;
 
   $(document).on("click", 'input[type="checkbox"]', function () {
     $('input[type="checkbox"]').not(this).prop("checked", false);
@@ -9,6 +10,7 @@ $(document).ready(function () {
 
   harFile.addEventListener("change", (event) => {
     const file = event.target.files[0];
+     fileName = event.target.files[0].name;
     const reader = new FileReader();
 
     reader.onload = function (e) {
@@ -109,7 +111,7 @@ $(document).ready(function () {
             encodeURIComponent(JSON.stringify(editedHar, null, 2));
           var downloadAnchorNode = document.createElement("a");
           downloadAnchorNode.setAttribute("href", dataStr);
-          downloadAnchorNode.setAttribute("download", "test" + ".har");
+          downloadAnchorNode.setAttribute("download", fileName + ".har");
           document.body.appendChild(downloadAnchorNode); // required for firefox
           downloadAnchorNode.click();
           downloadAnchorNode.remove();
