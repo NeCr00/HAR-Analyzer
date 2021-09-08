@@ -12,9 +12,8 @@ while($row = mysqli_fetch_assoc($result)){
     $isps [] = $row;
 }
 
-$sql = 'SELECT entry.content_typeResponse, entry.cache_controlResponse,  entry.last_modifiedResponse, entry.expiresResponse,userips.isp FROM entry
-INNER JOIN userips  ON entry.user_id = userips.user_id
-Where entry.last_modifiedResponse != "" AND entry.expiresResponse !="" AND entry.content_typeResponse != ""';
+$sql = 'SELECT entry.content_typeResponse, entry.cache_controlResponse,  entry.last_modifiedResponse, entry.expiresResponse,entry.isp FROM entry
+Where entry.last_modifiedResponse IS NOT NULL AND entry.expiresResponse IS NOT NULL AND entry.content_typeResponse IS NOT NULL';
 
 $result = $conn->query($sql);
 $entries = array();
@@ -23,7 +22,7 @@ while($row=mysqli_fetch_assoc($result)){
     $entries[] = $row;
 }
 
-$sql = 'SELECT DISTINCT content_typeResponse from entry  WHERE content_typeResponse !=""';
+$sql = 'SELECT DISTINCT content_typeResponse from entry  WHERE content_typeResponse  IS NOT NULL';
 $result = $conn->query($sql);
 $content_type = array();
 
@@ -32,7 +31,7 @@ while($row=mysqli_fetch_assoc($result)){
 }
 
 
-$sql = 'SELECT  cache_controlRequest,cache_controlResponse,content_typeResponse, isp FROM entry WHERE content_typeResponse != ""';
+$sql = 'SELECT  cache_controlRequest,cache_controlResponse,content_typeResponse, isp FROM entry WHERE content_typeResponse  IS NOT NULL ';
 $result = $conn->query($sql);
 $cache_entries = array();
 
