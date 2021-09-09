@@ -29,7 +29,7 @@ $(document).ready(function () {
         value +
         "</label>";
 
-      //$("#ispsCheck").append(element);
+     
       $("#isp").append(element);
     });
 
@@ -115,23 +115,26 @@ function getAge(contents, isps, entries) {
     var maxAge = 0;
     var cache_control = value.cache_controlResponse; //get max-age from string
     cache_control = cache_control.split(",");
-    console.log(cache_control)
+   
     cache_control.forEach((data) => {
       if (data.includes("max-age")) {
         data = data.replace(/\D/g, "");
         maxAge = parseInt(data);
-      } 
+        console.log(data)
+      }
+
     });
 
     if(maxAge == 0){
       maxAge = getAgeExpires(
-        value.last_modifiedResponse,
-        value.expiresResponse
+        value.expiresResponse,
+        value.last_modifiedResponse
+        
       );
     }
        
     
-   
+     if(maxAge > 0)
       xValues.push(Array(content, maxAge));
     
   });
@@ -140,10 +143,12 @@ function getAge(contents, isps, entries) {
 }
 
 function getAgeExpires(date1, date2) {
-  var difference = Math.abs(date2 - date1);
-  days = difference / (1000 * 3600 * 24);
-
-  return days * 3600 * 24;
+  date1 = new Date (date1)
+  date2 = new Date (date2)
+  var difference = (Math.abs(date2-date1));
+  
+  return difference /1000;
+ 
 }
 
 function makeHistogram(filteredData) {
@@ -158,6 +163,12 @@ function makeHistogram(filteredData) {
       legend: { position: "none" },
       colors: ["#fc5001"],
       fontSize: 12,
+      hAxis: {
+        title: 'Max-Age to Seconds'
+      },
+      vAxis: {
+        title: 'Number of entries'
+      },
       backgroundColor: "#E1E1E1",
       histogram: {
         maxNumBuckets: 10,
