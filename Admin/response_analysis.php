@@ -45,14 +45,14 @@ include('navbar.php');
                 <h2> Choose Isp</h2>
                 <div id=isp class=contentType></div>
             </div>
-
+            <div class=button>
+                <button id=button class=but> Apply</button>
+            </div>
 
 
         </div>
 
-        <div class=button>
-            <button id=button class=but> Apply</button>
-        </div>
+       
 
     </div>
     <div class=container>
