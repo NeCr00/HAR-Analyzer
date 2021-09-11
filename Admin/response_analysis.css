@@ -9,7 +9,7 @@ body {
 
 .sidenav {
     text-align: center;
-    margin: 0 auto;
+    margin-right: 20px;
     font-family: Montserrat, sans-serif;
     height: fit-content;
     width: fit-content;
@@ -28,13 +28,14 @@ body {
 }
 
 .container {
-    height: 900px;
-    width: 800px;
+    height: 500px;
+    width: 1250px;
     position: relative;
-    top: 50%;
-    left: 50%;
+    top: 30%;
+    left: 30%;
     right: 50%;
     text-align: center;
+    align-content: center;
 }
 
 .chart-title {
@@ -43,6 +44,8 @@ body {
 }
 
 .chart {
+    height: 100%;
+    width: 100%;
     margin-left: 50;
     justify-content: center;
 }
