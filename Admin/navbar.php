@@ -16,7 +16,7 @@ if (isset($_SESSION['username']) && $_SESSION['role'] == 'User') {
 <html>
 <header>
 
-    <title>Forum</title>
+<title>Har Analyzer</title>
     <link rel="stylesheet" href="navbar.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 

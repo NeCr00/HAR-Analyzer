@@ -14,11 +14,11 @@ $(document).ready(function () {
       },
     });
   }
-
+  
   $.when(getLocationData()).then(function success(data) {
     myData = { data: data };
     console.log(myData);
-
+   
     var ltlng = [];
     var ultlng = [];
     var count = [];

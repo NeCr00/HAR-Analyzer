@@ -3,7 +3,8 @@
 include('../dbconn.php');
 header('Content-Type: application/json');
 
-$sql = 'SELECT wait, startedDateTime, content_typeResponse, method, isp FROM entry WHERE user_id=1;';
+
+$sql = 'SELECT wait, startedDateTime, content_typeResponse, method, isp FROM entry ;';
     $result = $conn->query($sql);
     $entries = array();
 

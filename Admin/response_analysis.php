@@ -56,8 +56,9 @@ include('navbar.php');
 
     </div>
     <div class=container>
+        <h2 class = title> Analysis of response times to requests </h2>
         <div class=chart>
-            <canvas id="Chart" ></canvas>
+            <canvas id="Chart"  ></canvas>
         </div>
     </div>
 

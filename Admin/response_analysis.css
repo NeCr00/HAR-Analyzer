@@ -40,8 +40,17 @@ body {
   color:black;
 }
 .chart{
+  width: 80%;
+  height: 600px;
   margin: 0 auto;
   justify-content: center;
+}
+
+
+.title {
+	margin-top:100px;
+	color:rgb(0, 0, 0);
+  font-size: 26px;
 }
 
 h1{

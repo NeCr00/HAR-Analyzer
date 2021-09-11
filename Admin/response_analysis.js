@@ -1,55 +1,39 @@
 $(document).ready(function() {
     $.when(getInfo()).then(function success(data) {
         console.log(data);
-
-
-
-
-
-
+        destroy = 0;
 
         fixedEntries = getDay(data.entries)
-        days = getDay(data.Datetime)
-        hours = getHours(data.Datetime)
-        console.log(hours)
+        console.log(fixedEntries);
+        fixedEntries = getHours(data.entries);
+        console.log(fixedEntries);
 
+        var ctx = document.getElementById('Chart').getContext('2d');
+
+        
         allDatetime = [];
         allcontent_typeResponse = [];
         allmethod = [];
         allisp = [];
 
+          
 
-        //unique.forEach([...new Set(value)])
+      allDatetime = getDay(data.Datetime)
+      distinctDays = getDistinctDays(allDatetime)
 
 
 
-
-        data.Datetime.forEach(function(Datetime) {
-            value = JSON.stringify(Datetime.startedDateTime);
-            value = value.slice(1, -1);
-            allDatetime.push(value);
-        });
-
-        /*
-                function sort_days(allDatetime) {
-                    var day_of_week = new Date().getDay();
-                    var list = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-                    var sorted_list = list.slice(day_of_week).concat(list.slice(0, day_of_week));
-                    return allDatetime.sort(function(a, b) { return sorted_list.indexOf(a) > sorted_list.indexOf(b); });
-                };
-        */
-        allDatetime = ([...new Set(allDatetime)]);
-        //allDatetime = sort_days(allDatetime);
-        //console.log(allDatetime);
-
-        allDatetime.forEach(function(allDatetime, index) {
+  
+       
+    
+      distinctDays.forEach(function(distinctDays, index) {
             element =
                 '<input type="checkbox" id="boxDatetime-' +
                 index +
                 '" value="Datetime"> <label for="boxDatetime-' +
                 index +
                 '">' +
-                allDatetime +
+                distinctDays +
                 "</label>";
             $("#Datetime").append(element);
         });
@@ -104,7 +88,14 @@ $(document).ready(function() {
             $("#isp").append(element);
         });
 
+        filteredData = filterData(fixedEntries, allisp,allmethod,allcontent_typeResponse,distinctDays)
+        dataset = makeDataset(filteredData)
+        myChart = makeLineChart(dataset,ctx);
+
+
         $("#button").click(function(event) {
+
+          myChart.destroy()
 
             var selectedDatetime = [];
             var selectedcontent_typeResponse = [];
@@ -135,7 +126,7 @@ $(document).ready(function() {
                 selectedcontent_typeResponse = allcontent_typeResponse;
             }
             if (selectedDatetime.length < 1) {
-                selectedDatetime = allDatetime;
+                selectedDatetime = distinctDays;
             }
             if (selectedisp.length < 1) {
                 selectedisp = allisp;
@@ -143,62 +134,18 @@ $(document).ready(function() {
             if (selectedmethod.length < 1) {
                 selectedmethod = allmethod;
             }
+            
+            
+            filteredData = filterData(fixedEntries, selectedisp,selectedmethod,selectedcontent_typeResponse,selectedDatetime)
+            dataset = makeDataset(filteredData)
+            myChart =  makeLineChart(dataset,ctx);
+            
+            
         });
 
-        var ctx = document.getElementById('Chart').getContext('2d');
-        reqData = data.method;
-        method_filtered = data.method_filtered;
-        isp_filtered = data.isp_filtered;
-        content_typeResponse_filtered = data.content_typeResponse_filtered
+      
 
-        //console.log(method_filtered, isp_filtered, content_typeResponse_filtered);
-
-
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: allDatetime,
-                datasets: [{
-                        label: 'Dataset 1',
-                        data: method_filtered,
-                        backgroundColor: "rgba(255, 99, 132, 0.5)",
-                        stack: 'Stack 1',
-                    },
-                    {
-                        label: 'Dataset 2',
-                        data: isp_filtered,
-                        backgroundColor: "rgba(54, 162, 235, 0.5)",
-                        stack: 'Stack 2',
-                    },
-                    {
-                        label: 'Dataset 3',
-                        data: content_typeResponse_filtered,
-                        backgroundColor: "rgba(255, 206, 86, 0.5)",
-                        stack: 'Stack 3',
-                    },
-                ]
-            },
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'wait time'
-                    },
-                },
-                responsive: true,
-                interaction: {
-                    intersect: false,
-                },
-                scales: {
-                    x: {
-                        stacked: true,
-                    },
-                    y: {
-                        stacked: true
-                    }
-                }
-            }
-        });
+      
     });
 });
 
@@ -233,8 +180,8 @@ function getDay(data) {
 
 
 
-        value.startedDateTime = weekday[day]
-
+       // value.startedDateTime = weekday[day]
+      value["day"] = weekday[day]
     });
 
     return data;
@@ -252,18 +199,10 @@ function getHours(data) {
 
     data.forEach(function(value) {
         var time = value.startedDateTime
-
-
         var m = time.match(/\d{2}[:]/)
-        console.log(m[0])
+        var hour = m[0];
 
-        var date = new Date(m[0])
-
-        hours = date.getHours()
-
-        value.startedDateTime = hours[hours]
-
-
+      value["hour"] = hour[0]+hour[1];
     });
 
     return data;
@@ -273,18 +212,105 @@ function getHours(data) {
 
 
 
-/*
+function getDistinctDays (dateTime) {
 
-function getStaleAndFresh(entries, contents, isps) {
-    var num_stale = 0;
-    var num_fresh = 0;
+  var distinctDays = []
 
-    entries = entries.filter((data) => isps.includes(data.isp));
+  dateTime.forEach( value =>{
+
+    distinctDays.push(value.day)
+  })
 
 
+  distinctDays = ([...new Set(distinctDays)]);
+  console.log(distinctDays)
+  return distinctDays
+}
+
+function makeLineChart ( dataset,ctx){
+ 
+
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+    
+        labels: ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"],
+        datasets: [{
+
+           label: "# of average response times ",
+          data: dataset,
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          tension: 0.3
+        }]
+    },
+    options : {
+ 
+      borderColor:'rgba(255, 255, 255,)',
+      backgroundColor: 'rgba(255, 255, 255,)',
+      scales: {
+        x: {
+          beginAtZero: true,
+          
+      },
+      y:{
+        beginAtZero: true
+      }
+        
+      }     
+    },
+});
+
+return myChart;
+}
 
 
-    console.log(entries);
+function filterData(entries, selectedisp,selectedmethod,selectedContent,selectedDay) {
+
+  entries = entries.filter((value) =>selectedContent.includes(value.content_typeResponse));
+  entries = entries.filter((value) =>selectedisp.includes(value.isp));
+  entries = entries.filter((value) =>selectedmethod.includes(value.method));
+  entries = entries.filter((value) =>selectedDay.includes(value.day));
+
+ return entries;
+}
+
+function makeDataset (entries){
+hours = ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
+
+total_wait_per_hour = new Array(24).fill(0);
+num_wait_per_hour =  new Array(24).fill(0);
+
+
+// entries.forEach((value) => {
+//   index = hours.indexOf(value.hour)
+//   dataset[index].wait = dataset[index].wait + value.wait
+//   da
+// })
+
+hours.forEach((value,index) => {
+
+  entries.forEach(data =>{
+   
+     if(value == data.hour){
+       
+      total_wait_per_hour[index] = total_wait_per_hour[index] + parseFloat(data.wait)
+      num_wait_per_hour[index] = num_wait_per_hour[index] + 1;
+     }
+  })
+})
+
+dataset = new Array(24).fill(0);
+total_wait_per_hour.forEach((value,index) => {
+
+  if(num_wait_per_hour[index])
+  dataset[index] = value /num_wait_per_hour[index]
+
+})
+
+console.log(dataset)
+return dataset;
 
 }
-*/
+
+
