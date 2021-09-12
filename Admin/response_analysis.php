@@ -45,20 +45,22 @@ include('navbar.php');
                 <h2> Choose Isp</h2>
                 <div id=isp class=contentType></div>
             </div>
-            <div class=button>
-                <button id=button class=but> Apply</button>
-            </div>
 
 
         </div>
 
-       
+        <div class=button>
+            <button id=button class=but> Apply</button>
+        </div>
 
     </div>
-    <div class=container>
-        <h2 class = title> Analysis of response times to requests </h2>
-        <div class=chart>
-            <canvas id="Chart"  ></canvas>
+    <div class = main-container>
+        <h2 class=chart-title> Analysis of response times to requests </h2>
+        <div class=container>
+
+            <div class=chart>
+                <canvas id="Chart"></canvas>
+            </div>
         </div>
     </div>
 

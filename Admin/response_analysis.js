@@ -234,31 +234,43 @@ function makeLineChart ( dataset,ctx){
     type: 'line',
     data: {
     
-        labels: ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"],
+        labels: ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"],
         datasets: [{
-
+          
            label: "# of average response times ",
           data: dataset,
           fill: false,
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.3
+         
+          tension: 0.3,
+          borderColor: 'rgb(235, 107, 52)',
         }]
     },
-    options : {
- 
-      borderColor:'rgba(255, 255, 255,)',
-      backgroundColor: 'rgba(255, 255, 255,)',
+    options: {
+      legend: {
+           labels: {
+                fontColor: 'orange'
+               }
+            },
+      title: {
+          display: true,
+          fontColor: 'blue',
+          text: 'Custom Chart Title'
+      }     ,
       scales: {
-        x: {
-          beginAtZero: true,
-          
-      },
-      y:{
-        beginAtZero: true
-      }
-        
-      }     
-    },
+          yAxes: [{
+              ticks: {
+                  beginAtZero:true,
+                  fontColor: 'red'
+              },
+          }],
+        xAxes: [{
+              ticks: {
+                  fontColor: 'green'
+              },
+          }]
+      } 
+
+  },
 });
 
 return myChart;
@@ -267,26 +279,21 @@ return myChart;
 
 function filterData(entries, selectedisp,selectedmethod,selectedContent,selectedDay) {
 
-  entries = entries.filter((value) =>selectedContent.includes(value.content_typeResponse));
-  entries = entries.filter((value) =>selectedisp.includes(value.isp));
-  entries = entries.filter((value) =>selectedmethod.includes(value.method));
-  entries = entries.filter((value) =>selectedDay.includes(value.day));
-
+  entries = entries.filter((value) =>selectedContent.find (data => data.includes(value.content_typeResponse)) );
+  entries = entries.filter((value) =>selectedisp.find (data => data.includes(value.isp)));
+  entries = entries.filter((value) =>selectedDay.find (data => data.includes(value.day)));
+  entries = entries.filter((value) =>selectedmethod.find (data => data.includes(value.method)));
+  
  return entries;
 }
 
 function makeDataset (entries){
 hours = ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
 
+console.log()
 total_wait_per_hour = new Array(24).fill(0);
 num_wait_per_hour =  new Array(24).fill(0);
 
-
-// entries.forEach((value) => {
-//   index = hours.indexOf(value.hour)
-//   dataset[index].wait = dataset[index].wait + value.wait
-//   da
-// })
 
 hours.forEach((value,index) => {
 
@@ -308,7 +315,7 @@ total_wait_per_hour.forEach((value,index) => {
 
 })
 
-console.log(dataset)
+
 return dataset;
 
 }
