@@ -37,6 +37,10 @@ $(document).ready(function () {
 
     for (i = 0; i < l; i++) {
       count[i] = Math.round(count[i] / ratio);
+      if(count[i]<1){
+        count[i]=1;
+      }
+    
     }
 
     var myOptions = {
