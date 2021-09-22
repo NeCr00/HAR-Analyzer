@@ -9,7 +9,7 @@ $userID = $_SESSION['userID'];
 $data = array();
 
 
-$sql = "SELECT userips.lat as ulat,userips.lng as ulng,serversip.lat as slat,serversip.lng as slng,sum(serversip.count) as c FROM userips INNER JOIN serversip ON userips.user_id=serversip.user_id GROUP BY serversip.lat,serversip.lng,serversip.user_id ORDER BY userips.lat,userips.lng,serversip.lat,serversip.lng";
+$sql = "SELECT userips.lat as ulat,userips.lng as ulng,serversip.lat as slat,serversip.lng as slng , count from serversip INNER JOIN userips ON serversip.user_id = userips.user_id ORDER BY userips.lat ASC";
 $result = $conn->query($sql);
 
 
@@ -20,7 +20,7 @@ $ulat = $row['ulat'];
 $ulng = $row['ulng'];
 $slat = $row['slat'];
 $slng = $row['slng'];
-$count = $row['c'];
+$count = $row['count'];
 $temp = array('ulat' => $ulat, 'ulng' => $ulng, 'slat' => $slat, 'slng' => $slng, 'count' => $count);
 
 $data[]=$temp;

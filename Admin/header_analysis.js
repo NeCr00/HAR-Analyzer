@@ -99,7 +99,7 @@ function getInfo() {
 function getAge(contents, isps, entries) {
   var xValues = Array(["Content-Type", "Age"]);
 
-  console.log(entries.length)
+
   entries = entries.filter((value) =>
   isps.find(data=>data.includes(value.isp))
 );
@@ -108,7 +108,7 @@ function getAge(contents, isps, entries) {
     contents.find(data=>data.includes(value.content_typeResponse))
   );
 
-  console.log(entries)
+ 
   entries.forEach((value) => {
     
     var content = value.content_typeResponse; //take content type response
@@ -120,7 +120,7 @@ function getAge(contents, isps, entries) {
       if (data.includes("max-age")) {
         data = data.replace(/\D/g, "");
         maxAge = parseInt(data);
-        console.log(data)
+        
       }
 
     });
@@ -152,7 +152,7 @@ function getAgeExpires(date1, date2) {
 }
 
 function makeHistogram(filteredData) {
-  console.log(filteredData.length)
+
   google.charts.load("current", { packages: ["corechart"] });
   google.charts.setOnLoadCallback(drawChart);
   function drawChart() {
@@ -188,7 +188,7 @@ function getCacheability(entries, contents, isps) {
   var num_private = 0;
   var num_cache = 0;
   var num_store = 0;
-  console.log(entries.length);
+
   entries = entries.filter((value) =>
   isps.find(data=>data.includes(value.isp))
 );
@@ -196,7 +196,7 @@ function getCacheability(entries, contents, isps) {
   entries = entries.filter((value) =>
     contents.find(data=>data.includes(value.content_typeResponse))
   );
-  console.log(entries.length);
+  
   var num_entries = entries.length;
   setTimeout(function () {
     entries.forEach((value) => {
@@ -242,13 +242,15 @@ function getStaleAndFresh(entries, contents, isps) {
   var num_entries = entries.length;
   entries.forEach((data) => {
     
-    cache_info = data.cache_controlRequest.split(",");
+    cache_info_req = data.cache_controlRequest.split(",");
+    cache_info_res = data.cache_controlResponse.split(",");
+
     
-    if (cache_info.find(data=>data.includes("max-stale"))) {  
+    if (cache_info_req.find(data=>data.includes("max-stale")) || cache_info_res.find(data=>data.includes("max-stale")) ) {  
       num_stale++;
     }
 
-    if (cache_info.find(data=>data.includes("min-fresh"))) {
+    if (cache_info_req.find(data=>data.includes("min-fresh")) || cache_info_res.find(data=>data.includes("min-fresh")) ) {  
       num_fresh++;
     }
   });
@@ -256,7 +258,7 @@ function getStaleAndFresh(entries, contents, isps) {
   setTimeout(function () {
     $("#max_stales").html(((num_stale / num_entries) * 100).toFixed(2) + "%");
     $("#min_fresh").html(((num_fresh / num_entries) * 100).toFixed(2) + "%");
-   
+    console.log(num_stale)
   }, 1000);
 
 }
